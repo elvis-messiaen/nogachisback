@@ -3,52 +3,73 @@ package fr.nogachi.controller;
 import fr.nogachi.entity.Utilisateur;
 import fr.nogachi.repository.UtilisateurRepository;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Optional;
 
 /**
- * @author Meddiaen elvis
+ * @author Messiaen elvis
  */
 
 @RestController
 public class UtilisateurController {
 
-    // @Autowired => depreceted  !! ceci est deprecated
     private UtilisateurRepository utilisateurRepository;
-
-    // instancie à la demande un utilisateur repository
+    
+    /**
+     *   instancie à la demande un utilisateur repository
+     *   POSTMAN: OK
+     *   TEST : (OK/FAIL/WIP)
+     */
     public UtilisateurController(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
     }
 
-    // affiche la list des utilisateurs check
+    /**
+     *   affiche la list des utilisateurs
+     *   POSTMAN: OK
+     *   TEST : (OK/FAIL/WIP)
+     */
     @GetMapping(path = "/utilisateur")
     public List<Utilisateur> ListUtilisateur() {
         return utilisateurRepository.findAll();
     }
 
-    // recherche un utilisateur par id check
+    /**
+     *   recherche un utilisateur par id
+     *   POSTMAN: OK
+     *   TEST : (OK/FAIL/WIP)
+     */
     @GetMapping(path = "/utilisateur/{id}")
     public Utilisateur afficherUnUtilisateur(@PathVariable Long id) {
 
         return utilisateurRepository.findById(id).get();
     }
 
-    //ajouter un utilisateur check
+    /**
+     *   ajouter un utilisateur
+     *   POSTMAN: OK
+     *   TEST : (OK/FAIL/WIP)
+     */
     @PostMapping(path = "/utilisateur")
     public Utilisateur ajouter (@RequestBody Utilisateur utilisateur) {
         return  utilisateurRepository.save(utilisateur);
     }
 
-    // mise a jour de l'utilisateur check
+    /**
+     *   mise a jour de l'utilisateur
+     *   POSTMAN: OK
+     *   TEST : (OK/FAIL/WIP)
+     */
     @PutMapping(path = "/utilisateur/{id}")
     public Utilisateur miseAJour (@PathVariable Long id, @RequestBody Utilisateur utilisateur){
         utilisateur.setId(id);
         return utilisateurRepository.save(utilisateur);
     }
 
-    //sippprimer un utilisateur
+    /**
+     *   suppprimer un utilisateur
+     *   POSTMAN: OK
+     *   TEST : (OK/FAIL/WIP)
+     */
     @DeleteMapping(path = "/utilisateur/{id}")
     public void supprimerUtilisateur (@PathVariable Long id){
         utilisateurRepository.deleteById(id);
