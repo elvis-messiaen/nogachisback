@@ -13,35 +13,64 @@ public class RoleController {
 
     private RoleRepository roleRepository;
 
+    /**
+     *
+     * instancie à la demande le repository role
+     */
     public RoleController(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
-    // affiche la liste des roles check
+
+    /**
+     * Affiche la liste des roles
+     * POSTMAN : OK
+     * TEST UNITAIRE : WIP
+     */
+ 
     @GetMapping(path = "/role")
     public List<Role> roleListe(){
         return  roleRepository.findAll();
     }
+    /**
+     * Recherche un role par ID
+     * POSTMAN : OK
+     * TEST UNITAIRE : WIP
+     */
 
-    // affiche un utilisateur par son id check
     @GetMapping(path = "/role/{id}")
     public Role getRole(@PathVariable Long id) {
         return roleRepository.findById(id).get();
     }
 
-// sauvergarde d'un utilisateur par son id
+
+    /**
+     * Créer un role
+     * POSTMAN : OK
+     * TEST UNITAIRE : WIP
+     */
     @PostMapping(path = "/role")
     public Role save(@RequestBody Role role) {
         return roleRepository.save(role);
     }
 
-    // mise a jour role check
+
+    /**
+     * Met à jours un role par id
+     * POSTMAN : OK
+     * TEST UNITAIRE : WIP
+     */
     @PutMapping(path = "/role/{id}")
     public Role update(@PathVariable Long id, @RequestBody Role role) {
         role.setId(id);
         return roleRepository.save(role);
     }
 
-    // supprime un utilisateur check
+
+    /**
+     * Supprime  un role par id
+     * POSTMAN : OK
+     * TEST UNITAIRE : WIP
+     */
     @DeleteMapping(path = "/role/{id}")
     public void delete(@PathVariable Long id) { roleRepository.deleteById(id);
     }
