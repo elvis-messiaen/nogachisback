@@ -7,7 +7,5 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> 
 
     Utilisateur findById(int id);
 
-    Utilisateur save(Utilisateur utilisateur);
-
-    void deleteUtilisateur(Long id);
+    public Utilisateur save(Utilisateur utilisateur);
 }
