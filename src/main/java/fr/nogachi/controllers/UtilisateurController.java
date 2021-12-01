@@ -13,7 +13,7 @@ import java.util.List;
 public class UtilisateurController {
 
     private UtilisateurRepository utilisateurRepository;
-    
+
     /**
      *   instancie à la demande un utilisateur repository
      *   POSTMAN: OK
