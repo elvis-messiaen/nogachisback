@@ -10,7 +10,10 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class articleSaveDTO {
+public class ArticleUpdateDTO {
+
+	private Long id;
+	
 
 	private String title;
 	

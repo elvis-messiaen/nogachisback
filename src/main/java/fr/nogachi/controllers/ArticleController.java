@@ -1,51 +1,68 @@
 package fr.nogachi.controllers;
 
-import fr.nogachi.entities.Article;
-import fr.nogachi.repositories.ArticleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import fr.nogachi.dtos.article.ArticleDTO;
+import fr.nogachi.dtos.article.ArticleDeleteDTO;
+import fr.nogachi.dtos.article.ArticleSaveDTO;
+import fr.nogachi.dtos.article.ArticleUpdateDTO;
+import fr.nogachi.services.ArticleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ArticleController {
 
-    @Autowired
-    private ArticleRepository articleRepository;
+    final ArticleService articleService;
 
-
-    public ArticleController(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
+    /**
+     * Instancie à la demande le service article
+     */
+    public ArticleController(ArticleService articleService) {
+        this.articleService = articleService;
     }
 
-    // Affichage de la  liste des articles
+    /*
+     * Affiche de la liste des articles
+     */
     @GetMapping(path = "/article")
-    public List<Article> ListArticle() {
-        return articleRepository.findAll();
+    public List<ArticleDTO> listArticle() {
+        return articleService.findAll();
     }
 
-    // Afficher un article par son id
+    /*
+     * Affiche un article par son id
+     * POSTMAN : OK
+     * TEST UNITAIRE : WIP
+     */
     @GetMapping(path = "/article/{id}")
-    public Article findArticleById(@PathVariable Long id) {
-        return articleRepository.findById(id).get();
+    public Optional<ArticleDTO> findArticleById(@PathVariable Long id) {
+        return articleService.findById(id);
     }
 
-    // Ajouter un article dans la table
+    /*
+     * Ajoute un article
+     * POSTMAN : OK
+     * TEST UNITAIRE : WIP
+     */
     @PostMapping(path = "/article")
-    public Article createArticle(@RequestBody Article article) {
-        return articleRepository.save(article);
+    public ArticleDTO createArticle(@RequestBody ArticleSaveDTO articleSaveDTO) {
+        return articleService.save(articleSaveDTO);
     }
 
     // modifier un article dans la table
     @PutMapping(path = "/article")
-    public Article updateArticle(@RequestBody Article article) {
-        return articleRepository.save(article);
+    public ArticleDTO updateArticle(@RequestBody ArticleUpdateDTO articleUpdateDTO) {
+        return articleService.update(articleUpdateDTO);
     }
 
-    // Suppression d'un article par son id
-    @DeleteMapping(path = "/article/{id}")
-    public void deleteArticleById(@PathVariable Long id) {
-        articleRepository.deleteById(id);
+    /**
+     * Supprime un article par id
+     *
+     */
+    @DeleteMapping(path = "/article")
+    public void deleteArticle(@RequestBody ArticleDeleteDTO articleDeleteDTO) {
+        articleService.delete(articleDeleteDTO);
     }
 
 
