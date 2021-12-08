@@ -1,7 +1,7 @@
-package fr.nogachi.controller;
+package fr.nogachi.controllers;
 
-import fr.nogachi.entity.Utilisateur;
-import fr.nogachi.repository.UtilisateurRepository;
+import fr.nogachi.entities.Utilisateur;
+import fr.nogachi.repositories.UtilisateurRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package fr.nogachi.repository;
+package fr.nogachi.repositories;
 
-import fr.nogachi.entity.Categorie;
+import fr.nogachi.entities.Categorie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategorieRepository extends JpaRepository<Categorie, Long> {

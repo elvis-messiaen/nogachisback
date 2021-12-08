@@ -1,7 +1,7 @@
-package fr.nogachi.controller;
+package fr.nogachi.controllers;
 
-import fr.nogachi.entity.Article;
-import fr.nogachi.repository.ArticleRepository;
+import fr.nogachi.entities.Article;
+import fr.nogachi.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
