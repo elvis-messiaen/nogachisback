@@ -1,6 +1,6 @@
-package fr.nogachi.repository;
+package fr.nogachi.repositories;
 
-import fr.nogachi.entity.Photo;
+import fr.nogachi.entities.Photo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PhotoRepository extends JpaRepository<Photo, Long> {

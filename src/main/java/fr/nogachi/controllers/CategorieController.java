@@ -1,7 +1,7 @@
-package fr.nogachi.controller;
+package fr.nogachi.controllers;
 
-import fr.nogachi.entity.Categorie;
-import fr.nogachi.repository.CategorieRepository;
+import fr.nogachi.entities.Categorie;
+import fr.nogachi.repositories.CategorieRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

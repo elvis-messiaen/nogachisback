@@ -1,6 +1,6 @@
-package fr.nogachi.repository;
+package fr.nogachi.repositories;
 
-import fr.nogachi.entity.Utilisateur;
+import fr.nogachi.entities.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @author Messiaen ELVIS

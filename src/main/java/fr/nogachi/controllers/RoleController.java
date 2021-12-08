@@ -1,9 +1,7 @@
-package fr.nogachi.controller;
+package fr.nogachi.controllers;
 
-import fr.nogachi.entity.Role;
-import fr.nogachi.repository.RoleRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import fr.nogachi.entities.Role;
+import fr.nogachi.repositories.RoleRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

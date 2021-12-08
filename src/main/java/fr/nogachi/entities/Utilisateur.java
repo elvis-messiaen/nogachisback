@@ -1,4 +1,4 @@
-package fr.nogachi.entity;
+package fr.nogachi.entities;
 /**
  * @author Messaien ELVIS
  */

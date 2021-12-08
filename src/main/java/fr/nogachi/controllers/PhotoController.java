@@ -1,7 +1,7 @@
-package fr.nogachi.controller;
+package fr.nogachi.controllers;
 
-import fr.nogachi.entity.Photo;
-import fr.nogachi.repository.PhotoRepository;
+import fr.nogachi.entities.Photo;
+import fr.nogachi.repositories.PhotoRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

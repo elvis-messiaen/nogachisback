@@ -1,7 +1,7 @@
 package fr.nogachi;
 
-import fr.nogachi.entity.Role;
-import fr.nogachi.repository.RoleRepository;
+import fr.nogachi.entities.Role;
+import fr.nogachi.repositories.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

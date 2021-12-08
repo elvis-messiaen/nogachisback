@@ -1,8 +1,8 @@
-package fr.nogachi.repository;
+package fr.nogachi.repositories;
 
 
 
-import fr.nogachi.entity.Role;
+import fr.nogachi.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
