@@ -1,23 +1,24 @@
 package fr.nogachi.controllers;
 
 import fr.nogachi.entities.Categorie;
-import fr.nogachi.repositories.CategorieRepository;
+import fr.nogachi.services.impl.CategorieService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
-@RestController
+@Controller
 public class CategorieController {
 
-    private final CategorieRepository categorieRepository;
+   @Autowired
+    CategorieService categorieService;
 
-    /**
-     * Instancie à la demande le repository catégorie
-     */
-    public CategorieController(CategorieRepository categorieRepository) {
-        this.categorieRepository = categorieRepository;
-    }
 
+   
     /**
      * Affiche la liste des categories
      * POSTMAN : OK
@@ -70,3 +71,4 @@ public class CategorieController {
         categorieRepository.deleteById(id);
     }
 }
+
