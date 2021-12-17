@@ -16,4 +16,5 @@ public class Role {
 
     @Column(nullable = false)
     private String nom;
+
 }
