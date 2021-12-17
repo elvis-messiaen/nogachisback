@@ -27,14 +27,8 @@ public class CategorieServiceImpl implements CategorieService{
         categorieRepository.deleteById(id);
     }
 
-    @Override
-    public List<Categorie> lister() {
-        return null;
-    }
-
-
     @Transactional
-    public List<Categorie> categorie() {
+    public List<Categorie> lister() {
         return categorieRepository.findAll();
     }
 

@@ -2,8 +2,10 @@ package fr.nogachi.services.impl;
 
 import fr.nogachi.entities.Categorie;
 
+
 import java.util.List;
 import java.util.Optional;
+
 
 public interface CategorieService {
 
