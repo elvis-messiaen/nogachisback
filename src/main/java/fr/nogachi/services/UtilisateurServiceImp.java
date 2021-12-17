@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UtilisateurService implements fr.nogachi.services.impl.UtilisateurService {
+public class UtilisateurServiceImp implements fr.nogachi.services.impl.UtilisateurService {
     /**
      * instance de la méthode utilisateurRepository
      */
@@ -19,7 +19,7 @@ public class UtilisateurService implements fr.nogachi.services.impl.UtilisateurS
      * constructeur du repository
      * @param utilisateurRepository
      */
-    public UtilisateurService(UtilisateurRepository utilisateurRepository) {
+    public UtilisateurServiceImp(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
     }
     /**

@@ -1,7 +1,7 @@
 package fr.nogachi.controllers;
 
 import fr.nogachi.entities.Utilisateur;
-import fr.nogachi.services.UtilisateurService;
+import fr.nogachi.services.UtilisateurServiceImp;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +15,11 @@ import java.util.Optional;
 public class UtilisateurController {
 
 
-    public UtilisateurController(UtilisateurService utilisateurService) {
+    public UtilisateurController(UtilisateurServiceImp utilisateurService) {
         this.utilisateurService = utilisateurService;
     }
 
-    UtilisateurService utilisateurService;
+    UtilisateurServiceImp utilisateurService;
 
     /**
      *   instancie à la demande un utilisateur repository
