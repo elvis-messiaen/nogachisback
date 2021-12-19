@@ -1,7 +1,4 @@
 package fr.nogachi.entities;
-/**
- * @author Messaien ELVIS
- */
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
