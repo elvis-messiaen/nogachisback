@@ -1,22 +1,23 @@
 package fr.nogachi.controllers;
 
 import fr.nogachi.entities.Role;
-import fr.nogachi.repositories.RoleRepository;
+import fr.nogachi.services.impl.RoleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class RoleController {
 
-    private RoleRepository roleRepository;
+    private RoleService roleService;
 
     /**
      *
      * instancie à la demande le repository role
      */
-    public RoleController(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
+    public RoleController(RoleService roleService) {
+        this.roleService = roleService;
     }
 
     /**
@@ -27,17 +28,18 @@ public class RoleController {
  
     @GetMapping(path = "/role")
     public List<Role> roleListe(){
-        return  roleRepository.findAll();
+        return  roleService.lister();
     }
     /**
      * Recherche un role par ID
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
+     * @return
      */
 
     @GetMapping(path = "/role/{id}")
-    public Role getRole(@PathVariable Long id) {
-        return roleRepository.findById(id).get();
+    public Optional<Role> getRole(@PathVariable Long id) {
+        return roleService.trouver(id);
     }
 
 
@@ -48,7 +50,7 @@ public class RoleController {
      */
     @PostMapping(path = "/role")
     public Role save(@RequestBody Role role) {
-        return roleRepository.save(role);
+        return roleService.enregistrer(role);
     }
 
 
@@ -57,10 +59,9 @@ public class RoleController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @PutMapping(path = "/role/{id}")
-    public Role update(@PathVariable Long id, @RequestBody Role role) {
-        role.setId(id);
-        return roleRepository.save(role);
+    @PutMapping()
+    public Role update(@RequestBody Role role) {
+        return roleService.enregistrer(role);
     }
 
 
@@ -70,8 +71,7 @@ public class RoleController {
      * TEST UNITAIRE : WIP
      */
     @DeleteMapping(path = "/role/{id}")
-    public void delete(@PathVariable Long id) { roleRepository.deleteById(id);
+    public void delete(@PathVariable Long id) { roleService.supprimer(id);
     }
-
 
 }

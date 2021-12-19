@@ -66,8 +66,7 @@ public class UtilisateurController {
      * TEST : (OK/FAIL/WIP)
      */
     @PutMapping(path = "/utilisateur/{id}")
-    public Utilisateur miseAJour(@PathVariable Long id, @RequestBody Utilisateur utilisateur) {
-        utilisateur.setId(id);
+    public Utilisateur miseAJour(@RequestBody Utilisateur utilisateur) {
         return utilisateurService.enregistrer(utilisateur);
     }
 
