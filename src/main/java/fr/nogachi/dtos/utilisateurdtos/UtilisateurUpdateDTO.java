@@ -13,10 +13,7 @@ import lombok.NoArgsConstructor;
 public class UtilisateurUpdateDTO {
 
     private Long id;
-
     private String email;
-
     private String mdp;
-
     private Role role;
 }
