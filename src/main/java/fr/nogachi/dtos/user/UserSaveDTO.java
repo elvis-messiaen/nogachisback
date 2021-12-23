@@ -1,4 +1,4 @@
-package fr.nogachi.dtos.utilisateurdtos;
+package fr.nogachi.dtos.user;
 
 
 import fr.nogachi.entities.Role;
@@ -6,16 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UtilisateurDTO {
+public class UserSaveDTO {
 
-    private Long id;
     private String email;
     private String mdp;
     private Role role;

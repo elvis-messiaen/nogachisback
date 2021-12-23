@@ -11,12 +11,12 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Categorie {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Size(min = 4, max = 25)
     @Column(nullable = false)
-    private String nom;
+    private String name;
 }

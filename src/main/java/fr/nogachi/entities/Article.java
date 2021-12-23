@@ -22,10 +22,10 @@ public class Article {
 	private Long id;
 	
 	@Column( nullable = false)
-	private String titre;
+	private String title;
 	
 	@Column( nullable = false)
-	private String contenu;
+	private String content;
 	
 
 	private Date date;
@@ -34,6 +34,6 @@ public class Article {
 	private long photo_idphoto;
 	
 
-	private String categorie_idcategorie;
+	private String category_idcategory;
 
 }

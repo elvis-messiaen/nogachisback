@@ -1,6 +1,6 @@
 package fr.nogachi.controllers;
 
-import fr.nogachi.entities.Utilisateur;
+import fr.nogachi.entities.User;
 import fr.nogachi.services.impl.UtilisateurServiceImp;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +12,10 @@ import java.util.Optional;
  */
 
 @RestController
-public class UtilisateurController {
+public class UserController {
 
 
-    public UtilisateurController(UtilisateurServiceImp utilisateurService) {
+    public UserController(UtilisateurServiceImp utilisateurService) {
         this.utilisateurService = utilisateurService;
     }
 
@@ -33,7 +33,7 @@ public class UtilisateurController {
      * TEST : (OK/FAIL/WIP)
      */
     @GetMapping(path = "/utilisateur")
-    public List<Utilisateur> ListUtilisateur() {
+    public List<User> ListUtilisateur() {
         return utilisateurService.lister();
 
     }
@@ -46,7 +46,7 @@ public class UtilisateurController {
      * @return
      */
     @GetMapping(path = "/utilisateur/{id}")
-    public Optional<Utilisateur> afficherUnUtilisateur(@PathVariable Long id) {
+    public Optional<User> afficherUnUtilisateur(@PathVariable Long id) {
         return utilisateurService.trouver(id);
     }
 
@@ -56,7 +56,7 @@ public class UtilisateurController {
      * TEST : (OK/FAIL/WIP)
      */
     @PostMapping(path = "/utilisateur")
-    public Utilisateur ajouter(@RequestBody Utilisateur utilisateur) {
+    public User ajouter(@RequestBody User utilisateur) {
         return utilisateurService.enregistrer(utilisateur);
     }
 
@@ -66,7 +66,7 @@ public class UtilisateurController {
      * TEST : (OK/FAIL/WIP)
      */
     @PutMapping(path = "/utilisateur/{id}")
-    public Utilisateur miseAJour(@RequestBody Utilisateur utilisateur) {
+    public User miseAJour(@RequestBody User utilisateur) {
         return utilisateurService.enregistrer(utilisateur);
     }
 

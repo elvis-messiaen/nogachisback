@@ -1,4 +1,4 @@
-package fr.nogachi.dtos.categoriedtos;
+package fr.nogachi.dtos.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class CategorieDeleteDTO {
+public class CategoryUpdateDTO {
     private Long id;
-
+    private String nom;
 }

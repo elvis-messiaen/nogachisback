@@ -1,17 +1,15 @@
-package fr.nogachi.dtos.categoriedtos;
+package fr.nogachi.dtos.photo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class CategorieDTO {
-    private Long id;
+public class PhotoSaveDTO {
+
+
     private String nom;
 }

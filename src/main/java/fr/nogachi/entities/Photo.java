@@ -18,5 +18,5 @@ public class Photo {
 
     @Size(min = 4, max = 25)
     @Column(nullable = false)
-    private String nom;
+    private String name;
 }

@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Utilisateur {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,8 +21,8 @@ public class Utilisateur {
     private String email;
 
     @Size(min = 8, max = 40)
-    @Column(name = "motDePasse", nullable = false, length = 40)
-    private String mdp;
+    @Column(name = "passWord", nullable = false, length = 40)
+    private String passWord;
 
     @OneToOne
     private Role role;

@@ -1,16 +1,15 @@
-package fr.nogachi.dtos.roledtos;
+package fr.nogachi.dtos.role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class RoleSaveDTO {
+public class RoleDTO {
 
+    private Long id;
     private String nom;
 }

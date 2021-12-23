@@ -1,4 +1,4 @@
-package fr.nogachi.dtos.categoriedtos;
+package fr.nogachi.dtos.photo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class CategorieUpdateDTO {
+public class PhotoDTO {
+
     private Long id;
     private String nom;
 }

@@ -1,17 +1,14 @@
-package fr.nogachi.dtos.photodtos;
+package fr.nogachi.dtos.role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 
-public class PhotoDTO {
+public class RoleUpdateDTO {
 
     private Long id;
     private String nom;

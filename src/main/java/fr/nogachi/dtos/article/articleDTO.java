@@ -1,4 +1,4 @@
-package fr.nogachi.dtos.articledtos;
+package fr.nogachi.dtos.article;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,10 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class articlesaveDTO {
+public class articleDTO {
+
+	private Long id;
+	
 
 	private String titre;
 	

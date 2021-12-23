@@ -1,7 +1,7 @@
 package fr.nogachi.services.impl;
 
-import fr.nogachi.entities.Categorie;
-import fr.nogachi.repositories.CategorieRepository;
+import fr.nogachi.entities.Category;
+import fr.nogachi.repositories.CategoryRepository;
 import fr.nogachi.services.CategorieService;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,14 @@ import java.util.Optional;
 @Service
 public class CategorieServiceImpl implements CategorieService {
 
-    private CategorieRepository categorieRepository;
+    private CategoryRepository categorieRepository;
 
-    public CategorieServiceImpl(CategorieRepository categorieRepository) {
+    public CategorieServiceImpl(CategoryRepository categorieRepository) {
         this.categorieRepository = categorieRepository;
     }
 
     @Transactional
-    public Categorie enregistrer(Categorie categorie) {
+    public Category enregistrer(Category categorie) {
         return categorieRepository.save(categorie);
     }
 
@@ -29,12 +29,12 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Transactional
-    public List<Categorie> lister() {
+    public List<Category> lister() {
         return categorieRepository.findAll();
     }
 
     @Transactional
-    public Optional<Categorie> trouver(long id) {
+    public Optional<Category> trouver(long id) {
         return categorieRepository.findById(id);
     }
 }

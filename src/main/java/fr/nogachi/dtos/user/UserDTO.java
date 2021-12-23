@@ -1,4 +1,4 @@
-package fr.nogachi.dtos.utilisateurdtos;
+package fr.nogachi.dtos.user;
 
 
 import fr.nogachi.entities.Role;
@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UtilisateurSaveDTO {
+public class UserDTO {
 
+    private Long id;
     private String email;
     private String mdp;
     private Role role;

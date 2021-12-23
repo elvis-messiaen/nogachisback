@@ -1,4 +1,5 @@
-package fr.nogachi.dtos.categoriedtos;
+package fr.nogachi.dtos.user;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class CategorieSaveDTO {
+public class UserDeleteDTO {
 
-    private String nom;
+    private Long id;
+
 }

@@ -1,6 +1,6 @@
 package fr.nogachi.services;
 
-import fr.nogachi.entities.Categorie;
+import fr.nogachi.entities.Category;
 
 
 import java.util.List;
@@ -9,13 +9,13 @@ import java.util.Optional;
 
 public interface CategorieService {
 
-     Categorie enregistrer(Categorie categorie);
+     Category enregistrer(Category categorie);
 
      void supprimer(long id);
 
-     List<Categorie> lister();
+     List<Category> lister();
 
-     Optional<Categorie> trouver(long id);
+     Optional<Category> trouver(long id);
 
 
 }

@@ -1,17 +1,16 @@
-package fr.nogachi.dtos.articledtos;
+package fr.nogachi.dtos.article;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.sql.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class articleDTO {
+public class articleUpdateDTO {
 
 	private Long id;
 	

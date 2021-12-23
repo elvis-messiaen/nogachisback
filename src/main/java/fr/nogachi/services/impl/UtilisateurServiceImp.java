@@ -1,7 +1,7 @@
 package fr.nogachi.services.impl;
 
-import fr.nogachi.entities.Utilisateur;
-import fr.nogachi.repositories.UtilisateurRepository;
+import fr.nogachi.entities.User;
+import fr.nogachi.repositories.UserRepository;
 import fr.nogachi.services.UtilisateurService;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +14,13 @@ public class UtilisateurServiceImp implements UtilisateurService {
     /**
      * instance de la méthode utilisateurRepository
      */
-    private UtilisateurRepository utilisateurRepository;
+    private UserRepository utilisateurRepository;
 
     /**
      * constructeur du repository
      * @param utilisateurRepository
      */
-    public UtilisateurServiceImp(UtilisateurRepository utilisateurRepository) {
+    public UtilisateurServiceImp(UserRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
     }
     /**
@@ -30,7 +30,7 @@ public class UtilisateurServiceImp implements UtilisateurService {
      * @return sauvegarde de l'utilisateur
      */
     @Transactional
-    public Utilisateur enregistrer(Utilisateur utilisateur) {
+    public User enregistrer(User utilisateur) {
 
        return utilisateurRepository.save(utilisateur);
     }
@@ -50,7 +50,7 @@ public class UtilisateurServiceImp implements UtilisateurService {
      * @return la listes des utilisateurs
      */
     @Transactional
-    public List<Utilisateur> lister() {
+    public List<User> lister() {
 
        return utilisateurRepository.findAll();
     }
@@ -61,7 +61,7 @@ public class UtilisateurServiceImp implements UtilisateurService {
      * @return
      */
     @Transactional
-    public Optional<Utilisateur> trouver(Long id) {
+    public Optional<User> trouver(Long id) {
 
        return utilisateurRepository.findById(id);
     }

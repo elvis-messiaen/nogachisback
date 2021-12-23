@@ -1,17 +1,15 @@
-package fr.nogachi.dtos.articledtos;
+package fr.nogachi.dtos.photo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class articleDeleteDTO {
+public class PhotoUpdateDTO {
 
-	private Long id;
-
+    private Long id;
+    private String nom;
 }

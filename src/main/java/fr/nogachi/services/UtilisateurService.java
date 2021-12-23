@@ -1,17 +1,17 @@
 package fr.nogachi.services;
 
-import fr.nogachi.entities.Utilisateur;
+import fr.nogachi.entities.User;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UtilisateurService {
-    Utilisateur enregistrer(Utilisateur utilisateur);
+    User enregistrer(User utilisateur);
 
     void supprimer(Long id);
 
-    List<Utilisateur> lister();
+    List<User> lister();
 
-    Optional<Utilisateur> trouver(Long id);
+    Optional<User> trouver(Long id);
 
 }

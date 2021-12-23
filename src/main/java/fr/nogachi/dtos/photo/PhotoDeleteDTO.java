@@ -1,14 +1,14 @@
-package fr.nogachi.dtos.roledtos;
+package fr.nogachi.dtos.photo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 
-public class RoleDeleteDTO {
+public class PhotoDeleteDTO {
 
     private Long id;
 

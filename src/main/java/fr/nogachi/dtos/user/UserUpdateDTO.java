@@ -1,4 +1,4 @@
-package fr.nogachi.dtos.utilisateurdtos;
+package fr.nogachi.dtos.user;
 
 
 import fr.nogachi.entities.Role;
@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UtilisateurUpdateDTO {
+public class UserUpdateDTO {
 
     private Long id;
     private String email;
-    private String mdp;
+    private String passWord;
     private Role role;
 }

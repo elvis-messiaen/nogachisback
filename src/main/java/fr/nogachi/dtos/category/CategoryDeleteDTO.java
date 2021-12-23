@@ -1,15 +1,14 @@
-package fr.nogachi.dtos.roledtos;
+package fr.nogachi.dtos.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 
-public class RoleUpdateDTO {
-
+public class CategoryDeleteDTO {
     private Long id;
-    private String nom;
+
 }

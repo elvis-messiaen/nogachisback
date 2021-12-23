@@ -1,6 +1,6 @@
 package fr.nogachi.controllers;
 
-import fr.nogachi.entities.Categorie;
+import fr.nogachi.entities.Category;
 import fr.nogachi.services.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class CategorieController {
+public class CategoryController {
 
    @Autowired
     CategorieService categorieService;
@@ -22,7 +22,7 @@ public class CategorieController {
      * TEST UNITAIRE : WIP
      */
     @GetMapping(path = "/categorie")
-    public List<Categorie> listeCategorie() {
+    public List<Category> listeCategorie() {
         return categorieService.lister();
     }
 
@@ -33,7 +33,7 @@ public class CategorieController {
      * @return
      */
     @GetMapping(path = "/categorie/{id}")
-    public Optional<Categorie> afficherCategorie(@PathVariable Long id) {
+    public Optional<Category> afficherCategorie(@PathVariable Long id) {
 
         return categorieService.trouver(id);
     }
@@ -44,7 +44,7 @@ public class CategorieController {
      * TEST UNITAIRE : WIP
      */
     @PostMapping(path = "/categorie")
-    public Categorie ajouterCategorie(@RequestBody Categorie categorie) {
+    public Category ajouterCategorie(@RequestBody Category categorie) {
         return categorieService.enregistrer(categorie);
     }
 
@@ -54,7 +54,7 @@ public class CategorieController {
      * TEST UNITAIRE : WIP
      */
     @PutMapping()
-    public Categorie miseAJourCategorie(@RequestBody Categorie categorie) {
+    public Category miseAJourCategorie(@RequestBody Category categorie) {
         return categorieService.enregistrer(categorie);
     }
 
