@@ -1,7 +1,11 @@
 package fr.nogachi.controllers;
 
+import fr.nogachi.dtos.role.RoleDTO;
+import fr.nogachi.dtos.role.RoleDeleteDTO;
+import fr.nogachi.dtos.role.RoleSaveDTO;
+import fr.nogachi.dtos.role.RoleUpdateDTO;
 import fr.nogachi.entities.Role;
-import fr.nogachi.services.RoleService;
+import fr.nogachi.services.impl.RoleServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,14 +14,17 @@ import java.util.Optional;
 @RestController
 public class RoleController {
 
-    private RoleService roleService;
+
+    public RoleController(RoleServiceImpl roleService) {
+        this.roleService = roleService;
+    }
 
     /**
      * instancie à la demande le repository role
      */
-    public RoleController(RoleService roleService) {
-        this.roleService = roleService;
-    }
+
+
+    RoleServiceImpl roleService;
 
     /**
      * Affiche la liste des roles
@@ -26,7 +33,7 @@ public class RoleController {
      */
 
     @GetMapping(path = "/role")
-    public List<Role> listRole() {
+    public List<RoleDTO> listRole() {
         return roleService.findAll();
     }
 
@@ -39,7 +46,7 @@ public class RoleController {
      */
 
     @GetMapping(path = "/role/{id}")
-    public Optional<Role> findRoleById(@PathVariable Long id) {
+    public Optional<RoleDTO> findRoleById(@PathVariable Long id) {
         return roleService.findById(id);
     }
 
@@ -50,8 +57,8 @@ public class RoleController {
      * TEST UNITAIRE : WIP
      */
     @PostMapping(path = "/role")
-    public Role createRole(@RequestBody Role role) {
-        return roleService.save(role);
+    public RoleDTO createRole(@RequestBody RoleSaveDTO roleSaveDTO) {
+        return roleService.save(roleSaveDTO);
     }
 
 
@@ -59,22 +66,23 @@ public class RoleController {
      * Met à jours un role par id
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
+     * @param roleUpdateDTO
      */
 
-   /* @PutMapping()
-    public Role update(@RequestBody Role role) {
-        return roleService.save(role);
+   @PutMapping()
+    public RoleDTO update(@RequestBody RoleSaveDTO roleUpdateDTO) {
+        return roleService.save(roleUpdateDTO);
     }
-*/
+
 
     /**
      * Supprime  un role par id
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @DeleteMapping(path = "/role/{id}")
-    public void deleteById(@PathVariable Long id) {
-        roleService.deleteById(id);
+    @DeleteMapping(path = "/role")
+    public void deleteRole(@RequestBody RoleDeleteDTO roleDeleteDTO) {
+        roleService.deleteById(roleDeleteDTO);
     }
 
 }
