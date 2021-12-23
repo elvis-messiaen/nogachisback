@@ -2,6 +2,7 @@ package fr.nogachi.services.impl;
 
 import fr.nogachi.entities.Role;
 import fr.nogachi.repositories.RoleRepository;
+import fr.nogachi.services.RoleService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
 
 
    private RoleRepository roleRepository;

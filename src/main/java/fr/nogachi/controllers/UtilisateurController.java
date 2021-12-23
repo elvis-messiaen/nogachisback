@@ -1,7 +1,7 @@
 package fr.nogachi.controllers;
 
 import fr.nogachi.entities.Utilisateur;
-import fr.nogachi.services.UtilisateurServiceImp;
+import fr.nogachi.services.impl.UtilisateurServiceImp;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
