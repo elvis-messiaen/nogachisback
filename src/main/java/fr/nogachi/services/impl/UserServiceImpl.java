@@ -3,6 +3,7 @@ package fr.nogachi.services.impl;
 import fr.nogachi.dtos.user.UserDTO;
 import fr.nogachi.dtos.user.UserDeleteDTO;
 import fr.nogachi.dtos.user.UserSaveDTO;
+import fr.nogachi.dtos.user.UserUpdateDTO;
 import fr.nogachi.entities.User;
 import fr.nogachi.repositories.UserRepository;
 import fr.nogachi.services.UserService;
@@ -48,10 +49,16 @@ public class UserServiceImpl implements UserService {
     public UserDTO save(UserSaveDTO userDTO) {
         User userSave = mapper.map(userDTO, User.class);
         User usersaving = this.userRepository.save(userSave);
-        UserDTO response = mapper.map(usersaving, UserDTO.class);
-        return response;
+        return mapper.map(usersaving, UserDTO.class);
     }
 
+
+    @Transactional
+    public UserDTO update(UserUpdateDTO userUpdateDTO) {
+        User userUpdate = mapper.map(userUpdateDTO, User.class);
+        User usersaving = this.userRepository.save(userUpdate);
+        return mapper.map(usersaving, UserDTO.class);
+    }
     /**
      * supprime l'user par son id
      *

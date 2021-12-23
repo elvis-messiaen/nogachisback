@@ -66,10 +66,11 @@ public class UserController {
      * mise a jour de l'user
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
+     * @param userUpdateDTO
      */
     @PutMapping(path = "/user")
-    public UserDTO update(@RequestBody UserSaveDTO userSaveDTO) {
-        return this.userService.save(userSaveDTO);
+    public UserDTO update(@RequestBody UserSaveDTO userUpdateDTO) {
+        return this.userService.save(userUpdateDTO);
     }
 
     /**
