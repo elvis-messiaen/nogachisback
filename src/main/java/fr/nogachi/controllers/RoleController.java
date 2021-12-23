@@ -1,7 +1,7 @@
 package fr.nogachi.controllers;
 
 import fr.nogachi.entities.Role;
-import fr.nogachi.services.impl.RoleService;
+import fr.nogachi.services.RoleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

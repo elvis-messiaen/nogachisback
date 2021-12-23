@@ -1,7 +1,8 @@
-package fr.nogachi.services;
+package fr.nogachi.services.impl;
 
 import fr.nogachi.entities.Utilisateur;
 import fr.nogachi.repositories.UtilisateurRepository;
+import fr.nogachi.services.UtilisateurService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UtilisateurServiceImp implements fr.nogachi.services.impl.UtilisateurService {
+public class UtilisateurServiceImp implements UtilisateurService {
     /**
      * instance de la méthode utilisateurRepository
      */
