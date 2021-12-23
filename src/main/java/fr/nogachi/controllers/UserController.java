@@ -1,7 +1,9 @@
 package fr.nogachi.controllers;
 
-import fr.nogachi.entities.User;
-import fr.nogachi.services.impl.UserServiceImp;
+import fr.nogachi.dtos.user.UserDTO;
+import fr.nogachi.dtos.user.UserDeleteDTO;
+import fr.nogachi.dtos.user.UserSaveDTO;
+import fr.nogachi.services.impl.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +17,11 @@ import java.util.Optional;
 public class UserController {
 
 
-    public UserController(UserServiceImp userService) {
+    public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
-    UserServiceImp userService;
+    UserServiceImpl userService;
 
     /**
      *   instancie à la demande un user repository
@@ -33,7 +35,7 @@ public class UserController {
      * TEST : (OK/FAIL/WIP)
      */
     @GetMapping(path = "/user")
-    public List<User> listUser() {
+    public List<UserDTO> listUser() {
         return userService.findAll();
 
     }
@@ -46,7 +48,7 @@ public class UserController {
      * @return
      */
     @GetMapping(path = "/user/{id}")
-    public Optional<User> findUnUser(@PathVariable Long id) {
+    public Optional<UserDTO> findUnUser(@PathVariable Long id) {
         return userService.findById(id);
     }
 
@@ -56,18 +58,19 @@ public class UserController {
      * TEST : (OK/FAIL/WIP)
      */
     @PostMapping(path = "/user")
-    public User create(@RequestBody User user) {
-        return userService.save(user);
+    public UserDTO create(@RequestBody UserSaveDTO userSaveDTO) {
+        return this.userService.save(userSaveDTO);
     }
 
     /**
      * mise a jour de l'user
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
+     * @param userUpdateDTO
      */
-    @PutMapping(path = "/user/{id}")
-    public User update(@RequestBody User user) {
-        return userService.save(user);
+    @PutMapping(path = "/user")
+    public UserDTO update(@RequestBody UserSaveDTO userUpdateDTO) {
+        return this.userService.save(userUpdateDTO);
     }
 
     /**
@@ -75,8 +78,8 @@ public class UserController {
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @DeleteMapping(path = "/user/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userService.deleteById(id);
+    @DeleteMapping(path = "/user")
+    public void deleteUser(@RequestBody UserDeleteDTO userDeleteDTO) {
+        this.userService.delete(userDeleteDTO);
     }
 }
