@@ -13,7 +13,6 @@ public class RoleController {
     private RoleService roleService;
 
     /**
-     *
      * instancie à la demande le repository role
      */
     public RoleController(RoleService roleService) {
@@ -25,21 +24,23 @@ public class RoleController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
- 
+
     @GetMapping(path = "/role")
-    public List<Role> roleListe(){
-        return  roleService.lister();
+    public List<Role> listRole() {
+        return roleService.findAll();
     }
+
     /**
      * Recherche un role par ID
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
+     *
      * @return
      */
 
     @GetMapping(path = "/role/{id}")
-    public Optional<Role> getRole(@PathVariable Long id) {
-        return roleService.trouver(id);
+    public Optional<Role> findRoleById(@PathVariable Long id) {
+        return roleService.findById(id);
     }
 
 
@@ -49,8 +50,8 @@ public class RoleController {
      * TEST UNITAIRE : WIP
      */
     @PostMapping(path = "/role")
-    public Role save(@RequestBody Role role) {
-        return roleService.enregistrer(role);
+    public Role createRole(@RequestBody Role role) {
+        return roleService.save(role);
     }
 
 
@@ -62,7 +63,7 @@ public class RoleController {
 
    /* @PutMapping()
     public Role update(@RequestBody Role role) {
-        return roleService.enregistrer(role);
+        return roleService.save(role);
     }
 */
 
@@ -72,7 +73,8 @@ public class RoleController {
      * TEST UNITAIRE : WIP
      */
     @DeleteMapping(path = "/role/{id}")
-    public void delete(@PathVariable Long id) { roleService.supprimer(id);
+    public void deleteById(@PathVariable Long id) {
+        roleService.deleteById(id);
     }
 
 }

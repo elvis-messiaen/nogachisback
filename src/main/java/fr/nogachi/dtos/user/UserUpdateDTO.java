@@ -14,6 +14,6 @@ public class UserUpdateDTO {
 
     private Long id;
     private String email;
-    private String passWord;
+    private String password;
     private Role role;
 }

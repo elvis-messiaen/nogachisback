@@ -1,7 +1,7 @@
 package fr.nogachi.controllers;
 
 import fr.nogachi.entities.Category;
-import fr.nogachi.services.CategorieService;
+import fr.nogachi.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,31 +11,30 @@ import java.util.Optional;
 @RestController
 public class CategoryController {
 
-   @Autowired
-    CategorieService categorieService;
+    @Autowired
+    CategoryService categoryService;
 
-
-   
     /**
      * Affiche la liste des categories
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @GetMapping(path = "/categorie")
-    public List<Category> listeCategorie() {
-        return categorieService.lister();
+    @GetMapping(path = "/category")
+    public List<Category> listCategory() {
+        return categoryService.findAll();
     }
 
     /**
      * Recherche une catégorie par id
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
+     *
      * @return
      */
-    @GetMapping(path = "/categorie/{id}")
-    public Optional<Category> afficherCategorie(@PathVariable Long id) {
+    @GetMapping(path = "/category/{id}")
+    public Optional<Category> findCategoryById(@PathVariable Long id) {
 
-        return categorieService.trouver(id);
+        return categoryService.findById(id);
     }
 
     /**
@@ -43,9 +42,9 @@ public class CategoryController {
      * POSTMAN : Ok
      * TEST UNITAIRE : WIP
      */
-    @PostMapping(path = "/categorie")
-    public Category ajouterCategorie(@RequestBody Category categorie) {
-        return categorieService.enregistrer(categorie);
+    @PostMapping(path = "/category")
+    public Category createCategory(@RequestBody Category category) {
+        return categoryService.save(category);
     }
 
     /**
@@ -54,8 +53,8 @@ public class CategoryController {
      * TEST UNITAIRE : WIP
      */
     @PutMapping()
-    public Category miseAJourCategorie(@RequestBody Category categorie) {
-        return categorieService.enregistrer(categorie);
+    public Category updateCategory(@RequestBody Category category) {
+        return categoryService.save(category);
     }
 
     /**
@@ -63,9 +62,9 @@ public class CategoryController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @DeleteMapping(path = "/categorie/{id}")
-    public void supprimerCategorie(@PathVariable Long id) {
-        categorieService.supprimer(id);
+    @DeleteMapping(path = "/category/{id}")
+    public void deleteCategory(@PathVariable Long id) {
+        categoryService.deleteById(id);
     }
 }
 
