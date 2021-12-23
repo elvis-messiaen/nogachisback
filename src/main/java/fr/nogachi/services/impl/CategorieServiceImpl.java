@@ -2,6 +2,7 @@ package fr.nogachi.services.impl;
 
 import fr.nogachi.entities.Categorie;
 import fr.nogachi.repositories.CategorieRepository;
+import fr.nogachi.services.CategorieService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategorieServiceImpl implements CategorieService{
+public class CategorieServiceImpl implements CategorieService {
 
     private CategorieRepository categorieRepository;
 
