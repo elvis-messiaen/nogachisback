@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 
 public class RoleSaveDTO {
 
-    private String nom;
+    private String name;
 }

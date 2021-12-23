@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class UserSaveDTO {
 
     private String email;
-    private String passWord;
+    private String password;
     private Role role;
 }

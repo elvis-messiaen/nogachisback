@@ -29,16 +29,16 @@ public class RoleServiceImpl implements RoleService {
      * @return role sauvegarder
      */
     @Transactional
-    public Role enregistrer(Role role) {
+    public Role save(Role role) {
         return roleRepository.save(role);
     }
 
     /**
-     *id supprimer un role par son id
+     *id deleteById un role par son id
      * @param id
      */
     @Transactional
-    public void supprimer(Long id) {
+    public void deleteById(Long id) {
         roleRepository.deleteById(id);
 
     }
@@ -48,18 +48,18 @@ public class RoleServiceImpl implements RoleService {
      * @return List role
      */
     @Transactional
-    public List<Role> lister() {
+    public List<Role> findAll() {
         return roleRepository.findAll();
     }
 
 
     /**
      *
-     * @param id trouver un role par son id si il existe
+     * @param id findById un role par son id si il existe
      * @return role
      */
     @Transactional
-    public Optional<Role> trouver(Long id) {
+    public Optional<Role> findById(Long id) {
         return roleRepository.findById(id);
     }
 

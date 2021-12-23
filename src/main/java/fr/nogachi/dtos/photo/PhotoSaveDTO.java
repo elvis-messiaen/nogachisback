@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 public class PhotoSaveDTO {
 
 
-    private String nom;
+    private String name;
 }

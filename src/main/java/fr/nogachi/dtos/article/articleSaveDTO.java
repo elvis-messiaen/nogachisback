@@ -12,10 +12,10 @@ import java.sql.Date;
 
 public class articleSaveDTO {
 
-	private String titre;
+	private String title;
 	
 
-	private String contenu;
+	private String content;
 	
 
 	private Date date;
@@ -24,6 +24,6 @@ public class articleSaveDTO {
 	private long photo_idphoto;
 	
 
-	private String categorie_idcategorie;
+	private String category_idcategory;
 
 }

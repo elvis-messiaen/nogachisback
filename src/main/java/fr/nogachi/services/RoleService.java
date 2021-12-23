@@ -7,11 +7,11 @@ import java.util.Optional;
 
 public interface RoleService {
 
-    Role enregistrer(Role role);
+    Role save(Role role);
 
-    void supprimer(Long id);
+    void deleteById(Long id);
 
-    List<Role> lister();
+    List<Role> findAll();
 
-    Optional<Role> trouver(Long id);
+    Optional<Role> findById(Long id);
 }

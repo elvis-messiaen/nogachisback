@@ -21,8 +21,8 @@ public class User {
     private String email;
 
     @Size(min = 8, max = 40)
-    @Column(name = "passWord", nullable = false, length = 40)
-    private String passWord;
+    @Column(name = "password", nullable = false, length = 40)
+    private String password;
 
     @OneToOne
     private Role role;

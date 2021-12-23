@@ -1,7 +1,7 @@
 package fr.nogachi.controllers;
 
 import fr.nogachi.entities.User;
-import fr.nogachi.services.impl.UtilisateurServiceImp;
+import fr.nogachi.services.impl.UserServiceImp;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,68 +15,68 @@ import java.util.Optional;
 public class UserController {
 
 
-    public UserController(UtilisateurServiceImp utilisateurService) {
-        this.utilisateurService = utilisateurService;
+    public UserController(UserServiceImp userService) {
+        this.userService = userService;
     }
 
-    UtilisateurServiceImp utilisateurService;
+    UserServiceImp userService;
 
     /**
-     *   instancie à la demande un utilisateur repository
+     *   instancie à la demande un user repository
      *   POSTMAN: OK
      *   TEST : (OK/FAIL/WIP)
      */
 
     /**
-     * affiche la list des utilisateurs
+     * affiche la list des users
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @GetMapping(path = "/utilisateur")
-    public List<User> ListUtilisateur() {
-        return utilisateurService.lister();
+    @GetMapping(path = "/user")
+    public List<User> listUser() {
+        return userService.findAll();
 
     }
 
     /**
-     * recherche un utilisateur par id
+     * recherche un user par id
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      *
      * @return
      */
-    @GetMapping(path = "/utilisateur/{id}")
-    public Optional<User> afficherUnUtilisateur(@PathVariable Long id) {
-        return utilisateurService.trouver(id);
+    @GetMapping(path = "/user/{id}")
+    public Optional<User> findUnUser(@PathVariable Long id) {
+        return userService.findById(id);
     }
 
     /**
-     * ajouter un utilisateur
+     * create un user
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @PostMapping(path = "/utilisateur")
-    public User ajouter(@RequestBody User utilisateur) {
-        return utilisateurService.enregistrer(utilisateur);
+    @PostMapping(path = "/user")
+    public User create(@RequestBody User user) {
+        return userService.save(user);
     }
 
     /**
-     * mise a jour de l'utilisateur
+     * mise a jour de l'user
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @PutMapping(path = "/utilisateur/{id}")
-    public User miseAJour(@RequestBody User utilisateur) {
-        return utilisateurService.enregistrer(utilisateur);
+    @PutMapping(path = "/user/{id}")
+    public User update(@RequestBody User user) {
+        return userService.save(user);
     }
 
     /**
-     * suppprimer un utilisateur
+     * suppprimer un user
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @DeleteMapping(path = "/utilisateur/{id}")
-    public void supprimerUtilisateur(@PathVariable Long id) {
-        utilisateurService.supprimer(id);
+    @DeleteMapping(path = "/user/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteById(id);
     }
 }

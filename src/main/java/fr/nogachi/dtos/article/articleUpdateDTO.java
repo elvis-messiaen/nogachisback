@@ -15,10 +15,10 @@ public class articleUpdateDTO {
 	private Long id;
 	
 
-	private String titre;
+	private String title;
 	
 
-	private String contenu;
+	private String content;
 	
 
 	private Date date;
@@ -27,6 +27,6 @@ public class articleUpdateDTO {
 	private long photo_idphoto;
 	
 
-	private String categorie_idcategorie;
+	private String category_idcategory;
 
 }
