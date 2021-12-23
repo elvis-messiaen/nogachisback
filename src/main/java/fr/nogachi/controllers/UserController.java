@@ -59,8 +59,7 @@ public class UserController {
      */
     @PostMapping(path = "/user")
     public UserDTO create(@RequestBody UserSaveDTO userSaveDTO) {
-        UserDTO response = this.userService.save(userSaveDTO);
-        return response;
+        return this.userService.save(userSaveDTO);
     }
 
     /**
@@ -68,10 +67,9 @@ public class UserController {
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @PutMapping(path = "/user/{id}")
+    @PutMapping(path = "/user")
     public UserDTO update(@RequestBody UserSaveDTO userSaveDTO) {
-        UserDTO response = this.userService.save(userSaveDTO);
-        return response;
+        return this.userService.save(userSaveDTO);
     }
 
     /**
