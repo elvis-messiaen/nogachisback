@@ -59,11 +59,12 @@ public class RoleController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @PutMapping()
+
+   /* @PutMapping()
     public Role update(@RequestBody Role role) {
         return roleService.enregistrer(role);
     }
-
+*/
 
     /**
      * Supprime  un role par id

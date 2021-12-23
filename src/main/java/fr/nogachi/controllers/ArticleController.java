@@ -26,26 +26,25 @@ public class ArticleController {
 
     // Afficher un article par son id
     @GetMapping(path = "/article/{id}")
-    public Article rechercheArticleParId(@PathVariable Long id) {
-
+    public Article findArticleById(@PathVariable Long id) {
         return articleRepository.findById(id).get();
     }
 
     // Ajouter un article dans la table
     @PostMapping(path = "/article")
-    public Article ajouterArticle(@RequestBody Article article) {
+    public Article createArticle(@RequestBody Article article) {
         return articleRepository.save(article);
     }
 
     // modifier un article dans la table
-    @PutMapping(path = "/article/{id}")
-    public Article ajouterArticle(@PathVariable Long id, @RequestBody Article article) {
+    @PutMapping(path = "/article")
+    public Article updateArticle(@RequestBody Article article) {
         return articleRepository.save(article);
     }
 
     // Suppression d'un article par son id
     @DeleteMapping(path = "/article/{id}")
-    public void supprimerArticleParId(@PathVariable Long id) {
+    public void deleteArticleById(@PathVariable Long id) {
         articleRepository.deleteById(id);
     }
 
