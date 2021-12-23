@@ -1,17 +1,20 @@
 package fr.nogachi.services;
 
+import fr.nogachi.dtos.user.UserDTO;
+import fr.nogachi.dtos.user.UserDeleteDTO;
+import fr.nogachi.dtos.user.UserSaveDTO;
 import fr.nogachi.entities.User;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    User save(User user);
+    UserDTO save(UserSaveDTO userSaveDTO);
 
-    void deleteById(Long id);
+    void delete(UserDeleteDTO userDeleteDTO);
 
-    List<User> findAll();
+    List<UserDTO> findAll();
 
-    Optional<User> findById(Long id);
+    Optional<UserDTO> findById(Long id);
 
 }

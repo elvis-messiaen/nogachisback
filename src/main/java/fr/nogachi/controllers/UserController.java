@@ -1,5 +1,8 @@
 package fr.nogachi.controllers;
 
+import fr.nogachi.dtos.user.UserDTO;
+import fr.nogachi.dtos.user.UserDeleteDTO;
+import fr.nogachi.dtos.user.UserSaveDTO;
 import fr.nogachi.entities.User;
 import fr.nogachi.services.impl.UserServiceImp;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +36,7 @@ public class UserController {
      * TEST : (OK/FAIL/WIP)
      */
     @GetMapping(path = "/user")
-    public List<User> listUser() {
+    public List<UserDTO> listUser() {
         return userService.findAll();
 
     }
@@ -46,7 +49,7 @@ public class UserController {
      * @return
      */
     @GetMapping(path = "/user/{id}")
-    public Optional<User> findUnUser(@PathVariable Long id) {
+    public Optional<UserDTO> findUnUser(@PathVariable Long id) {
         return userService.findById(id);
     }
 
@@ -56,8 +59,9 @@ public class UserController {
      * TEST : (OK/FAIL/WIP)
      */
     @PostMapping(path = "/user")
-    public User create(@RequestBody User user) {
-        return userService.save(user);
+    public UserDTO create(@RequestBody UserSaveDTO userSaveDTO) {
+        UserDTO response = this.userService.save(userSaveDTO);
+        return response;
     }
 
     /**
@@ -66,8 +70,9 @@ public class UserController {
      * TEST : (OK/FAIL/WIP)
      */
     @PutMapping(path = "/user/{id}")
-    public User update(@RequestBody User user) {
-        return userService.save(user);
+    public UserDTO update(@RequestBody UserSaveDTO userSaveDTO) {
+        UserDTO response = this.userService.save(userSaveDTO);
+        return response;
     }
 
     /**
@@ -75,8 +80,8 @@ public class UserController {
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @DeleteMapping(path = "/user/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userService.deleteById(id);
+    @DeleteMapping(path = "/user")
+    public void deleteUser(@RequestBody UserDeleteDTO userDeleteDTO) {
+        this.userService.delete(userDeleteDTO);
     }
 }
