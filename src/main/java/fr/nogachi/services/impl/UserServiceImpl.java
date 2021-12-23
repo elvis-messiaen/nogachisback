@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-public class UserServiceImp implements UserService {
+public class UserServiceImpl implements UserService {
 
     /**
      * instance de la méthode userRepository
@@ -32,7 +32,7 @@ public class UserServiceImp implements UserService {
      * @param userRepository
      * @param mapper
      */
-    public UserServiceImp(UserRepository userRepository, ModelMapper mapper) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper mapper) {
         this.userRepository = userRepository;
         this.mapper = mapper;
     }

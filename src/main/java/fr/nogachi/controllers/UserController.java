@@ -3,8 +3,7 @@ package fr.nogachi.controllers;
 import fr.nogachi.dtos.user.UserDTO;
 import fr.nogachi.dtos.user.UserDeleteDTO;
 import fr.nogachi.dtos.user.UserSaveDTO;
-import fr.nogachi.entities.User;
-import fr.nogachi.services.impl.UserServiceImp;
+import fr.nogachi.services.impl.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,11 +17,11 @@ import java.util.Optional;
 public class UserController {
 
 
-    public UserController(UserServiceImp userService) {
+    public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
-    UserServiceImp userService;
+    UserServiceImpl userService;
 
     /**
      *   instancie à la demande un user repository
