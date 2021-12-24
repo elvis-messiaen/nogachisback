@@ -1,5 +1,9 @@
 package fr.nogachi.services;
 
+import fr.nogachi.dtos.role.RoleDTO;
+import fr.nogachi.dtos.role.RoleDeleteDTO;
+import fr.nogachi.dtos.role.RoleSaveDTO;
+import fr.nogachi.dtos.role.RoleUpdateDTO;
 import fr.nogachi.entities.Role;
 
 import java.util.List;
@@ -7,11 +11,12 @@ import java.util.Optional;
 
 public interface RoleService {
 
-    Role save(Role role);
+    RoleDTO save(RoleSaveDTO roleSaveDTO);
 
-    void deleteById(Long id);
+    RoleDTO update(RoleUpdateDTO roleUpdateDTO);
+    void deleteById(RoleDeleteDTO roleDeleteDTO);
 
-    List<Role> findAll();
+    List<RoleDTO> findAll();
 
-    Optional<Role> findById(Long id);
+    Optional<RoleDTO> findById(Long id);
 }

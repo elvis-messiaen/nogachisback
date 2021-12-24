@@ -1,5 +1,9 @@
 package fr.nogachi.services;
 
+import fr.nogachi.dtos.category.CategoryDTO;
+import fr.nogachi.dtos.category.CategoryDeleteDTO;
+import fr.nogachi.dtos.category.CategorySaveDTO;
+import fr.nogachi.dtos.category.CategoryUpdateDTO;
 import fr.nogachi.entities.Category;
 
 
@@ -9,13 +13,15 @@ import java.util.Optional;
 
 public interface CategoryService {
 
-     Category save(Category category);
+     CategoryDTO save(CategorySaveDTO categorySaveDTO);
 
-     void deleteById(long id);
+     CategoryDTO update(CategoryUpdateDTO categoryUpdateDTO);
 
-     List<Category> findAll();
+     void deleteById(CategoryDeleteDTO categoryDeleteDTO);
 
-     Optional<Category> findById(long id);
+     List<CategoryDTO> findAll();
+
+     Optional<CategoryDTO> findById(long id);
 
 
 }

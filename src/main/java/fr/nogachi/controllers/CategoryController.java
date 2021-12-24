@@ -1,7 +1,12 @@
 package fr.nogachi.controllers;
 
+import fr.nogachi.dtos.category.CategoryDTO;
+import fr.nogachi.dtos.category.CategoryDeleteDTO;
+import fr.nogachi.dtos.category.CategorySaveDTO;
+import fr.nogachi.dtos.category.CategoryUpdateDTO;
 import fr.nogachi.entities.Category;
 import fr.nogachi.services.CategoryService;
+import fr.nogachi.services.impl.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,8 +16,12 @@ import java.util.Optional;
 @RestController
 public class CategoryController {
 
-    @Autowired
-    CategoryService categoryService;
+
+    public CategoryController(CategoryServiceImpl categoryService) {
+        this.categoryService = categoryService;
+    }
+
+    CategoryServiceImpl categoryService;
 
     /**
      * Affiche la liste des categories
@@ -20,7 +29,7 @@ public class CategoryController {
      * TEST UNITAIRE : WIP
      */
     @GetMapping(path = "/category")
-    public List<Category> listCategory() {
+    public List<CategoryDTO> listCategory() {
         return categoryService.findAll();
     }
 
@@ -32,7 +41,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping(path = "/category/{id}")
-    public Optional<Category> findCategoryById(@PathVariable Long id) {
+    public Optional<CategoryDTO> findCategoryById(@PathVariable Long id) {
 
         return categoryService.findById(id);
     }
@@ -43,8 +52,8 @@ public class CategoryController {
      * TEST UNITAIRE : WIP
      */
     @PostMapping(path = "/category")
-    public Category createCategory(@RequestBody Category category) {
-        return categoryService.save(category);
+    public CategoryDTO createCategory(@RequestBody CategorySaveDTO categorySaveDTO) {
+        return categoryService.save(categorySaveDTO);
     }
 
     /**
@@ -52,9 +61,9 @@ public class CategoryController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @PutMapping()
-    public Category updateCategory(@RequestBody Category category) {
-        return categoryService.save(category);
+    @PutMapping("/category")
+    public CategoryDTO updateCategory(@RequestBody CategorySaveDTO categoryUpdateDTO) {
+        return categoryService.save(categoryUpdateDTO);
     }
 
     /**
@@ -62,9 +71,9 @@ public class CategoryController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @DeleteMapping(path = "/category/{id}")
-    public void deleteCategory(@PathVariable Long id) {
-        categoryService.deleteById(id);
+    @DeleteMapping(path = "/category")
+    public void deleteCategory(@RequestBody CategoryDeleteDTO categoryDeleteDTO) {
+        categoryService.deleteById(categoryDeleteDTO);
     }
 }
 
