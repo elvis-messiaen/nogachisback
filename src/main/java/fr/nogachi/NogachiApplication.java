@@ -17,7 +17,7 @@ public class NogachiApplication {
     @Bean
     CommandLineRunner start(RoleRepository roleRepository) {
         return args -> {
-            roleRepository.save(new Role(null,"ADMINISTRATEUR"));
+            roleRepository.save(new Role(null,"ADMIN"));
             roleRepository.save(new Role(null,"USER"));
         };
     }

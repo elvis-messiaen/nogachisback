@@ -1,9 +1,7 @@
 package fr.nogachi.services.impl;
 
-import fr.nogachi.dtos.user.UserDTO;
-import fr.nogachi.dtos.user.UserDeleteDTO;
-import fr.nogachi.dtos.user.UserSaveDTO;
-import fr.nogachi.dtos.user.UserUpdateDTO;
+import fr.nogachi.dtos.user.*;
+import fr.nogachi.entities.Role;
 import fr.nogachi.entities.User;
 import fr.nogachi.repositories.UserRepository;
 import fr.nogachi.services.UserService;
@@ -38,6 +36,8 @@ public class UserServiceImpl implements UserService {
         this.mapper = mapper;
     }
 
+
+
     /**
      * Transactional => verifie qu'il n'y a pas de problème lors de la transaction
      * si un probleme annule toute modification
@@ -46,10 +46,12 @@ public class UserServiceImpl implements UserService {
      * @return sauvegarde de l'user
      */
     @Transactional
-    public UserDTO save(UserSaveDTO userDTO) {
+    public UserRoleDTO save(UserSaveDTO userDTO) {
         User userSave = mapper.map(userDTO, User.class);
+        Role roleUser = new Role(2L,"USER");
+        userSave.setRole(roleUser);
         User usersaving = this.userRepository.save(userSave);
-        return mapper.map(usersaving, UserDTO.class);
+        return mapper.map(usersaving, UserRoleDTO.class);
     }
 
 
@@ -78,9 +80,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public List<UserDTO> findAll() {
         List<UserDTO> userDTOList = new ArrayList<>();
-        this.userRepository.findAll().forEach(user -> {
-            userDTOList.add(mapper.map(user, UserDTO.class));
-        });
+        this.userRepository.findAll().forEach(user ->
+            userDTOList.add(mapper.map(user, UserDTO.class))
+        );
         return userDTOList;
     }
 
