@@ -21,9 +21,9 @@ public class ArticleSaveDTO {
 	private Date date;
 	
 
-	private long photo_idphoto;
+	private Long photo_idphoto;
 	
 
-	private String category_idcategory;
+	private Long category_idcategory;
 
 }
