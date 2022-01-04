@@ -5,13 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Article {
+public class Article implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,8 +26,9 @@ public class Article {
 
     private Date date;
 
-    private long photo_idphoto;
+    private Long photo_idphoto;
 
-    private String category_idcategory;
+    private Long category_idcategory;
+
 
 }
