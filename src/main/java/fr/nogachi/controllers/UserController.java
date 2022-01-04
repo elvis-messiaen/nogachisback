@@ -2,6 +2,7 @@ package fr.nogachi.controllers;
 
 import fr.nogachi.dtos.user.UserDTO;
 import fr.nogachi.dtos.user.UserDeleteDTO;
+import fr.nogachi.dtos.user.UserRoleDTO;
 import fr.nogachi.dtos.user.UserSaveDTO;
 import fr.nogachi.services.impl.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +17,11 @@ import java.util.Optional;
 @RestController
 public class UserController {
 
-
+    UserServiceImpl userService;
     public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
-    UserServiceImpl userService;
 
     /**
      *   instancie à la demande un user repository
@@ -57,8 +57,18 @@ public class UserController {
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @PostMapping(path = "/user")
+/*    @PostMapping(path = "/user")
     public UserDTO create(@RequestBody UserSaveDTO userSaveDTO) {
+        return this.userService.save(userSaveDTO);
+    }*/
+
+    /**
+     * create un user with role user
+     * POSTMAN: OK
+     * TEST : (OK/FAIL/WIP)
+     */
+    @PostMapping(path = "/userrole")
+    public UserRoleDTO createWithUser(@RequestBody UserSaveDTO userSaveDTO) {
         return this.userService.save(userSaveDTO);
     }
 
@@ -68,10 +78,10 @@ public class UserController {
      * TEST : (OK/FAIL/WIP)
      * @param userUpdateDTO
      */
-    @PutMapping(path = "/user")
+/*    @PutMapping(path = "/user")
     public UserDTO update(@RequestBody UserSaveDTO userUpdateDTO) {
         return this.userService.save(userUpdateDTO);
-    }
+    }*/
 
     /**
      * suppprimer un user
