@@ -32,5 +32,5 @@ class UserTest {
 
     @Test
     void setPassword() {
-    }*/
+    }
 }

@@ -25,7 +25,7 @@ public class UserControllerTest {
     private UserServiceImpl userServiceImpl;
 
 
-
+/*
     private UserDTO userDTO() {
         return new UserDTO(
                 1L,
@@ -50,4 +50,6 @@ public class UserControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isEmpty());
     }
+    */
+
 }

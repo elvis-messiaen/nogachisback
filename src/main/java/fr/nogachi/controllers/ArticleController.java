@@ -11,9 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class ArticleController {
 
     final ArticleService articleService;
+
 
     /**
      * Instancie à la demande le service article
