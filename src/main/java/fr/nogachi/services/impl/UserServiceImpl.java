@@ -1,18 +1,17 @@
 package fr.nogachi.services.impl;
 
 import fr.nogachi.dtos.user.*;
+import fr.nogachi.entities.ERole;
 import fr.nogachi.entities.Role;
 import fr.nogachi.entities.User;
+import fr.nogachi.repositories.RoleRepository;
 import fr.nogachi.repositories.UserRepository;
 import fr.nogachi.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -22,6 +21,7 @@ public class UserServiceImpl implements UserService {
      * instance de la méthode userRepository
      */
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
     private ModelMapper mapper;
 
@@ -32,11 +32,11 @@ public class UserServiceImpl implements UserService {
      * @param userRepository
      * @param mapper
      */
-    public UserServiceImpl(UserRepository userRepository, ModelMapper mapper) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, ModelMapper mapper) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.mapper = mapper;
     }
-
 
 
     /**
@@ -49,8 +49,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserRoleDTO save(UserSaveDTO userDTO) {
         User userSave = mapper.map(userDTO, User.class);
-        Role roleUser = new Role(2L,"USER");
-        userSave.setRole(roleUser);
+        Set<Role> roles = new HashSet<>();
+        Role userRole = roleRepository.findByName(ERole.ROLE_USER).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        roles.add(userRole);
+        userSave.setRoles(roles);
         User usersaving = this.userRepository.save(userSave);
         return mapper.map(usersaving, UserRoleDTO.class);
     }
@@ -62,6 +64,7 @@ public class UserServiceImpl implements UserService {
         User usersaving = this.userRepository.save(userUpdate);
         return mapper.map(usersaving, UserDTO.class);
     }
+
     /**
      * supprime l'user par son id
      *
@@ -82,7 +85,7 @@ public class UserServiceImpl implements UserService {
     public List<UserDTO> findAll() {
         List<UserDTO> userDTOList = new ArrayList<>();
         this.userRepository.findAll().forEach(user ->
-            userDTOList.add(mapper.map(user, UserDTO.class))
+                userDTOList.add(mapper.map(user, UserDTO.class))
         );
         return userDTOList;
     }

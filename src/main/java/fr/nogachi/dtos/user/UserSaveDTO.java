@@ -15,6 +15,7 @@ import java.util.List;
 
 public class UserSaveDTO {
 
+    private String username;
     private String email;
     private String password;
     private Role role;
