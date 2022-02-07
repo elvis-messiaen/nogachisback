@@ -1,22 +1,27 @@
 package fr.nogachi.controllers;
 
-import fr.nogachi.entities.Photo;
-import fr.nogachi.repositories.PhotoRepository;
+import fr.nogachi.dtos.photo.PhotoDTO;
+import fr.nogachi.dtos.photo.PhotoDeleteDTO;
+import fr.nogachi.dtos.photo.PhotoUpdateDTO;
+import fr.nogachi.services.impl.PhotoService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@CrossOrigin
 public class PhotoController {
 
-    private final PhotoRepository photoRepository;
+    private PhotoService photoService;
 
-    /**
-     * Instancie à la demande le repository photo
-     */
-    public PhotoController(PhotoRepository photoRepository) {
-        this.photoRepository = photoRepository;
+    @Autowired
+    private ModelMapper mapper;
+
+    public PhotoController(PhotoService photoService) {
+        this.photoService = photoService;
     }
 
     /**
@@ -25,19 +30,19 @@ public class PhotoController {
      * TEST UNITAIRE : WIP
      */
     @GetMapping(path = "/photo")
-    public List<Photo> listPhoto() {
-        return photoRepository.findAll();
+    public List<PhotoDTO> listPhoto() {
+        return photoService.findAll();
     }
 
     /**
      * Recherche une photo par id
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
+     * @return
      */
     @GetMapping(path = "/photo/{id}")
-    public Photo findPhotoById(@PathVariable Long id) {
-
-        return photoRepository.findById(id).get();
+    public Optional<PhotoDTO> findPhotoById(@PathVariable Long id) {
+        return photoService.findById(id);
     }
 
     /**
@@ -46,8 +51,10 @@ public class PhotoController {
      * TEST UNITAIRE : WIP
      */
     @PostMapping(path = "/photo")
-    public Photo createPhoto(@RequestBody Photo photo) {
-        return photoRepository.save(photo);
+    public PhotoDTO createPhoto(@RequestParam MultipartFile namephoto) {
+        return this.photoService.save(
+                namephoto
+        );
     }
 
     /**
@@ -56,9 +63,9 @@ public class PhotoController {
      * TEST UNITAIRE : WIP
      */
     @PutMapping(path = "/photo/{id}")
-    public Photo updatePhoto(@PathVariable Long id, @RequestBody Photo photo) {
-        photo.setId(id);
-        return photoRepository.save(photo);
+    public PhotoDTO updatePhoto(@PathVariable Long id, @RequestBody PhotoUpdateDTO photoUpdateDTO) {
+        photoUpdateDTO.setId(id);
+        return photoService.update(photoUpdateDTO);
     }
 
     /**
@@ -66,8 +73,8 @@ public class PhotoController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @DeleteMapping(path = "/photo/{id}")
-    public void deletePhoto(@PathVariable Long id) {
-        photoRepository.deleteById(id);
+    @DeleteMapping(path = "/photo")
+    public void deletePhoto(@RequestBody PhotoDeleteDTO photoDeleteDTO) {
+        photoService.delete(photoDeleteDTO);
     }
 }

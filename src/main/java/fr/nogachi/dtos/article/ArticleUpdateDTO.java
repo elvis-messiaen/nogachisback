@@ -22,9 +22,9 @@ public class ArticleUpdateDTO {
 	
 
 	private Date date;
-	
 
-	private Long photo_idphoto;
+
+	private String namephoto;
 	
 
 	private Long category_idcategory;

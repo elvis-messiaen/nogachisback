@@ -1,6 +1,5 @@
 package fr.nogachi.services.impl;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import fr.nogachi.dtos.article.ArticleDTO;
 import fr.nogachi.dtos.article.ArticleDeleteDTO;
 import fr.nogachi.dtos.article.ArticleSaveDTO;
@@ -28,12 +27,12 @@ public class ArticleServiceImpl implements ArticleService {
         this.modelMapper = modelMapper;
     }
 
+
     @Transactional
-    public ArticleDTO save(ArticleSaveDTO articleSaveDTO) {
-        Article article = modelMapper.map(articleSaveDTO, Article.class);
+    public Article save(Article article) {
+        Article articles = modelMapper.map(article, Article.class);
         Article articleDTO = this.articleRepository.save(article);
-        System.out.println(articleDTO);
-        return modelMapper.map(articleDTO, ArticleDTO.class);
+        return modelMapper.map(articleDTO,Article.class);
     }
 
     @Transactional

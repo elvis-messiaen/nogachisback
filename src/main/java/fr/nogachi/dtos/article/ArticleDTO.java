@@ -1,10 +1,13 @@
 package fr.nogachi.dtos.article;
 
+import fr.nogachi.entities.Photo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -21,11 +24,10 @@ public class ArticleDTO {
 	private String content;
 	
 
-	private Date date;
-	
+	private LocalDate date;
 
-	private Long photo_idphoto;
-	
+
+	private String namephoto;
 
 	private Long category_idcategory;
 
