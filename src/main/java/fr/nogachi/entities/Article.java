@@ -32,7 +32,13 @@ public class Article implements Serializable {
     private String namephoto;
 
     @ManyToOne(fetch = FetchType.LAZY)
-   private  Category namecategory;
+    private  Category namecategory;
 
-
+    public Article(Long id, String title, String content, LocalDate date, String namephoto) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.namephoto = namephoto;
+    }
 }
