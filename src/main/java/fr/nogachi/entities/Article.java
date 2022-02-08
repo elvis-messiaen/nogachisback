@@ -31,7 +31,8 @@ public class Article implements Serializable {
 
     private String namephoto;
 
-    private Long category_idcategory;
+    @ManyToOne(fetch = FetchType.LAZY)
+   private  Category namecategory;
 
 
 }

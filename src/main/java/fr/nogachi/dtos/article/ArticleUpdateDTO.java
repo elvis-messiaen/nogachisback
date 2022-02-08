@@ -1,5 +1,6 @@
 package fr.nogachi.dtos.article;
 
+import fr.nogachi.entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,8 +26,8 @@ public class ArticleUpdateDTO {
 
 
 	private String namephoto;
-	
 
-	private Long category_idcategory;
+
+	private Category namecategory;
 
 }
