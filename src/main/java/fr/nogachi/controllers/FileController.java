@@ -18,6 +18,7 @@ import java.util.Map;
  */
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class FileController {
 
     private final FileService service;

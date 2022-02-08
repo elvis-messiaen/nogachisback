@@ -23,9 +23,9 @@ public class ArticleSaveDTO {
 	
 
 	private LocalDate date;
-	
 
-	private String namephoto;
+
+	private Photo namephoto;
 	
 
 	private Category namecategory;

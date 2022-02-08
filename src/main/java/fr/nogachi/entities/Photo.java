@@ -17,8 +17,6 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 4, max = 25)
-    @Column(nullable = false)
     private String namephoto;
 
     @ManyToOne
