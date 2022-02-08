@@ -2,8 +2,8 @@ package fr.nogachi.controllers;
 
 import fr.nogachi.dtos.article.ArticleDTO;
 import fr.nogachi.dtos.article.ArticleDeleteDTO;
-import fr.nogachi.dtos.article.ArticleSaveDTO;
 import fr.nogachi.dtos.article.ArticleUpdateDTO;
+import fr.nogachi.entities.Article;
 import fr.nogachi.services.ArticleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,21 +11,24 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 public class ArticleController {
 
     final ArticleService articleService;
 
-
     /**
      * Instancie à la demande le service article
      */
+
+
     public ArticleController(ArticleService articleService) {
+
         this.articleService = articleService;
     }
 
     /*
      * Affiche de la liste des articles
+     *
      */
     @GetMapping(path = "/article")
     public List<ArticleDTO> listArticle() {
@@ -48,8 +51,8 @@ public class ArticleController {
      * TEST UNITAIRE : WIP
      */
     @PostMapping(path = "/article")
-    public ArticleDTO createArticle(@RequestBody ArticleSaveDTO articleSaveDTO) {
-        return articleService.save(articleSaveDTO);
+    public Article createArticle(@RequestBody Article article) {
+        return articleService.save(article);
     }
 
     // modifier un article dans la table
@@ -66,7 +69,6 @@ public class ArticleController {
     public void deleteArticle(@RequestBody ArticleDeleteDTO articleDeleteDTO) {
         articleService.delete(articleDeleteDTO);
     }
-
 
 }
 

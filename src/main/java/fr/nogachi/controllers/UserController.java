@@ -15,7 +15,7 @@ import java.util.Optional;
  */
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 public class UserController {
 
     UserServiceImpl userService;

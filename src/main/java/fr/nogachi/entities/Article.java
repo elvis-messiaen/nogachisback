@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 @Data
 @NoArgsConstructor
@@ -24,11 +27,18 @@ public class Article implements Serializable {
     @Column(nullable = false, columnDefinition="LONGTEXT")
     private String content;
 
-    private Date date;
+    private LocalDate date;
 
-    private Long photo_idphoto;
+    private String namephoto;
 
-    private Long category_idcategory;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private  Category namecategory;
 
-
+    public Article(Long id, String title, String content, LocalDate date, String namephoto) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.namephoto = namephoto;
+    }
 }

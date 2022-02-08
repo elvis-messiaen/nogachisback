@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +17,8 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 4, max = 25)
-    @Column(nullable = false)
-    private String name;
+    private String namephoto;
+
+    @ManyToOne
+    private Article article ;
 }

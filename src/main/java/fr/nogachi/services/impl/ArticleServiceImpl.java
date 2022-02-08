@@ -2,12 +2,14 @@ package fr.nogachi.services.impl;
 
 import fr.nogachi.dtos.article.ArticleDTO;
 import fr.nogachi.dtos.article.ArticleDeleteDTO;
-import fr.nogachi.dtos.article.ArticleSaveDTO;
 import fr.nogachi.dtos.article.ArticleUpdateDTO;
 import fr.nogachi.entities.Article;
+import fr.nogachi.entities.Category;
 import fr.nogachi.repositories.ArticleRepository;
+import fr.nogachi.repositories.CategoryRepository;
 import fr.nogachi.services.ArticleService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,17 +23,27 @@ public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleRepository articleRepository;
     private final ModelMapper modelMapper;
+    private CategoryRepository categoryRepository;
 
-    public ArticleServiceImpl(ArticleRepository articleRepository, ModelMapper modelMapper) {
+
+
+    public ArticleServiceImpl(ArticleRepository articleRepository, ModelMapper modelMapper, CategoryRepository categoryRepository) {
         this.articleRepository = articleRepository;
         this.modelMapper = modelMapper;
+        this.categoryRepository = categoryRepository;
     }
 
+
     @Transactional
-    public ArticleDTO save(ArticleSaveDTO articleSaveDTO) {
-        Article article = modelMapper.map(articleSaveDTO, Article.class);
+    public Article save(Article article) {
+        Article articles = modelMapper.map(article, Article.class);
+        Category category = new Category();
+
         Article articleDTO = this.articleRepository.save(article);
-        return modelMapper.map(articleDTO, ArticleDTO.class);
+        articleDTO.setNamecategory(category);
+        Article articlesauved = (articleDTO);
+        articlesauved.setNamecategory(category);
+        return articlesauved;
     }
 
     @Transactional
