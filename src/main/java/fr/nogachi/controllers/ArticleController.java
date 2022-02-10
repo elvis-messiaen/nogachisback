@@ -2,8 +2,8 @@ package fr.nogachi.controllers;
 
 import fr.nogachi.dtos.article.ArticleDTO;
 import fr.nogachi.dtos.article.ArticleDeleteDTO;
+import fr.nogachi.dtos.article.ArticleSaveDTO;
 import fr.nogachi.dtos.article.ArticleUpdateDTO;
-import fr.nogachi.entities.Article;
 import fr.nogachi.services.ArticleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,8 +51,8 @@ public class ArticleController {
      * TEST UNITAIRE : WIP
      */
     @PostMapping(path = "/article")
-    public Article createArticle(@RequestBody Article article) {
-        return articleService.save(article);
+    public ArticleSaveDTO createArticle(@RequestBody ArticleSaveDTO articleSaveDTO) {
+        return articleService.save(articleSaveDTO);
     }
 
     // modifier un article dans la table

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public interface ArticleService {
 
-    Article save(Article article);
+    ArticleSaveDTO save(ArticleSaveDTO article);
 
     ArticleDTO update(ArticleUpdateDTO articleUpdateDTO);
 

@@ -10,7 +10,7 @@
     </parent>
     <groupId>fr.nogachi</groupId>
     <artifactId>fil-rouge</artifactId>
-    <version>0.0.1-SNAPSHOT</version
+    <version>0.0.1-SNAPSHOT</version>
     <name>Nogachi</name>
     <description>Blog de conseil réduction de gâchis alimentaire</description>
 
