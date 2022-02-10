@@ -2,6 +2,7 @@ package fr.nogachi.dtos.article;
 
 import fr.nogachi.entities.Category;
 import fr.nogachi.entities.Photo;
+import fr.nogachi.enumeration.Type;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,8 @@ public class ArticleSaveDTO {
 
 	private LocalDate date;
 
+
+	private String nametype;
 
 	private Photo namephoto;
 	

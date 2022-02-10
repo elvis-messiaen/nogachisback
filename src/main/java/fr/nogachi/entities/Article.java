@@ -1,5 +1,6 @@
 package fr.nogachi.entities;
 
+import fr.nogachi.enumeration.Type;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,14 +32,18 @@ public class Article implements Serializable {
 
     private String namephoto;
 
+    @Enumerated(EnumType.STRING)
+    private Type nametype;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private  Category namecategory;
 
-    public Article(Long id, String title, String content, LocalDate date, String namephoto) {
+    public Article(Long id, String title, String content, LocalDate date, String namephoto,Type nametype) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.date = date;
         this.namephoto = namephoto;
+        this.nametype = nametype;
     }
 }

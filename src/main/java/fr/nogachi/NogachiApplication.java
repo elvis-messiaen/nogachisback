@@ -3,6 +3,7 @@ package fr.nogachi;
 import fr.nogachi.entities.Article;
 import fr.nogachi.entities.Category;
 import fr.nogachi.entities.Role;
+import fr.nogachi.enumeration.Type;
 import fr.nogachi.property.FileStorageProperty;
 import fr.nogachi.repositories.ArticleRepository;
 import fr.nogachi.repositories.CategoryRepository;
@@ -31,28 +32,50 @@ public class NogachiApplication {
         return args -> {
             roleRepository.save(new Role(null,"ADMIN"));
             roleRepository.save(new Role(null,"USER"));
-            Category Leg = new Category(null, "Legumes");
-            Category Leg1= new Category(null, "Fruit");
-            Category Leg2 = new Category(null, "Viande");
-            Category Leg3 = new Category(null, "Volailes");
-            Category Leg4 = new Category(null, "Conserve");
-            categoryRepository.save(Leg);
-            categoryRepository.save(Leg1);
-            categoryRepository.save(Leg2);
-            categoryRepository.save(Leg3);
-            categoryRepository.save(Leg4);
+            Category leg = new Category(null, "Legumes");
+            Category leg1= new Category(null, "Fruit");
+            Category leg2 = new Category(null, "Viande");
+            Category leg3 = new Category(null, "Volailes");
+            Category leg4 = new Category(null, "Conserve");
+            categoryRepository.save(leg);
+            categoryRepository.save(leg1);
+            categoryRepository.save(leg2);
+            categoryRepository.save(leg3);
+            categoryRepository.save(leg4);
 
-            Article article1 = new Article(null,"carotte","berbberbrbebrbebrberbe", LocalDate.of(2021, 01, 01), "photo1");
-            Article article2 = new Article(null,"navet","berbberbrbebrbebrberbe", LocalDate.of(1940, 01, 01), "photo2");
-            Article article3 = new Article(null,"poulet","berbberbrbebrbebrberbe", LocalDate.of(2021, 01, 01), "photo3");
-            Article article4 = new Article(null,"pomme de terre","berbberbrbebrbebrberbe", LocalDate.of(1980, 01, 01), "photo4");
-            Article article5 = new Article(null,"épinard","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "photo5");
+            Article article1 = new Article(null,"carotte","berbberbrbebrbebrberbe", LocalDate.of(2021, 01, 01), "photo1", Type.CONSERVATION);
+            Article article2 = new Article(null,"navet","berbberbrbebrbebrberbe", LocalDate.of(1940, 01, 01), "photo2", Type.CONSERVATION);
+            Article article3 = new Article(null,"poulet","berbberbrbebrbebrberbe", LocalDate.of(2021, 01, 01), "photo3", Type.CONSERVATION);
+            Article article4 = new Article(null,"pomme de terre","berbberbrbebrbebrberbe", LocalDate.of(1980, 01, 01), "photo4", Type.CONSERVATION);
+            Article article5 = new Article(null,"épinard","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "photo5", Type.CONSERVATION);
+
+            Article recette1 = new Article(null,"poulet au épices","poulet au ", LocalDate.of(2021, 01, 01), "photo5", Type.CONSERVATION);
+            Article recette2 = new Article(null,"Salade de concombre au chèvre et olives","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "photo5", Type.CONSERVATION);
+            Article recette3 = new Article(null,"pate carbonara","blablablabkalalalalalalla", LocalDate.of(2021, 01, 01), "photo5", Type.CONSERVATION);
+            Article recette4 = new Article(null,"riz cantonai","riz mddsdmlfmdlfmdlmfdlfmsdlfsmdlmslmdlfmsdl", LocalDate.of(2021, 01, 01), "photo5", Type.RECETTE);
+            Article recette5 = new Article(null,"pate bolognaise","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "photo5", Type.RECETTE);
+            Article recette6 = new Article(null,"pizza au feu de bois","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "photo5", Type.RECETTE);
+            Article recette7 = new Article(null,"lasagne au chévre","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "photo5", Type.RECETTE);
+            Article recette8 = new Article(null,"poulet basquaise","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "photo5", Type.RECETTE);
+            Article recette9 = new Article(null,"apéro parti","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "photo5", Type.RECETTE);
+            Article recette10 = new Article(null,"Phô vietnamien","miam j'adore cela", LocalDate.of(2021, 01, 01), "photo5", Type.RECETTE);
 
             articleRepository.save(article1);
             articleRepository.save(article2);
             articleRepository.save(article3);
             articleRepository.save(article4);
             articleRepository.save(article5);
+
+            articleRepository.save(recette1);
+            articleRepository.save(recette2);
+            articleRepository.save(recette3);
+            articleRepository.save(recette4);
+            articleRepository.save(recette5);
+            articleRepository.save(recette6);
+            articleRepository.save(recette7);
+            articleRepository.save(recette8);
+            articleRepository.save(recette9);
+            articleRepository.save(recette10);
         };
     }
 

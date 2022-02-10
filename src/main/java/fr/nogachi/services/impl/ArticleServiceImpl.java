@@ -2,6 +2,7 @@ package fr.nogachi.services.impl;
 
 import fr.nogachi.dtos.article.ArticleDTO;
 import fr.nogachi.dtos.article.ArticleDeleteDTO;
+import fr.nogachi.dtos.article.ArticleSaveDTO;
 import fr.nogachi.dtos.article.ArticleUpdateDTO;
 import fr.nogachi.entities.Article;
 import fr.nogachi.entities.Category;
@@ -35,15 +36,14 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Transactional
-    public Article save(Article article) {
-        Article articles = modelMapper.map(article, Article.class);
+    public ArticleSaveDTO save(ArticleSaveDTO articleSaveDTO) {
+        Article articles = modelMapper.map(articleSaveDTO, Article.class);
         Category category = new Category();
-
-        Article articleDTO = this.articleRepository.save(article);
+        Article articleDTO = this.articleRepository.save(articles);
         articleDTO.setNamecategory(category);
         Article articlesauved = (articleDTO);
         articlesauved.setNamecategory(category);
-        return articlesauved;
+        return modelMapper.map(articleSaveDTO, ArticleSaveDTO.class);
     }
 
     @Transactional

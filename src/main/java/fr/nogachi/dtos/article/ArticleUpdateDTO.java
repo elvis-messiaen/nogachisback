@@ -2,6 +2,7 @@ package fr.nogachi.dtos.article;
 
 import fr.nogachi.entities.Category;
 import fr.nogachi.entities.Photo;
+import fr.nogachi.enumeration.Type;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,8 @@ public class ArticleUpdateDTO {
 
 
 	private Photo namephoto;
+
+	private String nametype;
 
 
 	private Category namecategory;

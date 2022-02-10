@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    image: elvis1971/nogachi
+    container_name: nogachi-api
+    ports:
+      - 80:80
+    networks:
+      - net-nogachi
+    depends_on:
+      - nogachi
+  nogachi:
+    image: mysql
+    container_name: nogachi
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_DATABASE: nogachi
+      MYSQL_USER: elvis
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - net-nogachi
+networks:
+  net-nogachi:
