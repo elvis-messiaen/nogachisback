@@ -10,7 +10,6 @@ import fr.nogachi.repositories.ArticleRepository;
 import fr.nogachi.repositories.CategoryRepository;
 import fr.nogachi.services.ArticleService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,13 +19,12 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleRepository articleRepository;
     private final ModelMapper modelMapper;
     private CategoryRepository categoryRepository;
-
-
 
     public ArticleServiceImpl(ArticleRepository articleRepository, ModelMapper modelMapper, CategoryRepository categoryRepository) {
         this.articleRepository = articleRepository;
@@ -38,11 +36,16 @@ public class ArticleServiceImpl implements ArticleService {
     @Transactional
     public ArticleSaveDTO save(ArticleSaveDTO articleSaveDTO) {
         Article articles = modelMapper.map(articleSaveDTO, Article.class);
-        Category category = new Category();
-        Article articleDTO = this.articleRepository.save(articles);
-        articleDTO.setNamecategory(category);
-        Article articlesauved = (articleDTO);
-        articlesauved.setNamecategory(category);
+        if (articleSaveDTO.getNamecategory() != null) {
+            Category category = categoryRepository.findCategoryByNamecategory(articleSaveDTO.getNamecategory())
+                    .orElseGet(() -> this.categoryRepository.save(Category.builder()
+                            .namecategory(articleSaveDTO.getNamecategory())
+                            .build()));
+            articles.setNamecategory(category);
+        }
+
+        this.articleRepository.save(articles);
+
         return modelMapper.map(articleSaveDTO, ArticleSaveDTO.class);
     }
 

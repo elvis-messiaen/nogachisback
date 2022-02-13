@@ -4,21 +4,20 @@ import fr.nogachi.dtos.category.CategoryDTO;
 import fr.nogachi.dtos.category.CategoryDeleteDTO;
 import fr.nogachi.dtos.category.CategorySaveDTO;
 import fr.nogachi.dtos.category.CategoryUpdateDTO;
-import fr.nogachi.dtos.user.UserDTO;
 import fr.nogachi.entities.Category;
-import fr.nogachi.entities.User;
 import fr.nogachi.repositories.CategoryRepository;
 import fr.nogachi.services.CategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService {
 
     private CategoryRepository categoryRepository;

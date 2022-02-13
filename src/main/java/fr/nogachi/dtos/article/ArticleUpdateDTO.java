@@ -2,11 +2,10 @@ package fr.nogachi.dtos.article;
 
 import fr.nogachi.entities.Category;
 import fr.nogachi.entities.Photo;
-import fr.nogachi.enumeration.Type;
+import fr.nogachi.enumeration.TypesCard;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 
@@ -30,7 +29,7 @@ public class ArticleUpdateDTO {
 
 	private Photo namephoto;
 
-	private String nametype;
+	private TypesCard nametype;
 
 
 	private Category namecategory;

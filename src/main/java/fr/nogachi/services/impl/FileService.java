@@ -5,6 +5,7 @@ import fr.nogachi.property.FileStorageProperty;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -18,6 +19,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 @Service
+@Transactional
 public class FileService {
     private final Path filerStorageLocation;
 
@@ -46,7 +48,7 @@ public class FileService {
              Path cheminDeDestination = filerStorageLocation.resolve(filename);
              Files.copy(multipartFile.getInputStream(),cheminDeDestination, StandardCopyOption.REPLACE_EXISTING);
              return ServletUriComponentsBuilder.fromCurrentContextPath()// renvoie une String
-                     .path("photo/storage/")
+                     .path("file/")
                      .path(filename)
                      .toUriString();
          } catch (IOException e) {

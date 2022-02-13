@@ -2,13 +2,11 @@ package fr.nogachi.dtos.article;
 
 import fr.nogachi.entities.Category;
 import fr.nogachi.entities.Photo;
-import fr.nogachi.enumeration.Type;
+import fr.nogachi.enumeration.TypesCard;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Data
@@ -26,11 +24,11 @@ public class ArticleSaveDTO {
 	private LocalDate date;
 
 
-	private String nametype;
+	private TypesCard nametype;
 
-	private Photo namephoto;
+	private String namephoto;
 	
 
-	private Category namecategory;
+	private String namecategory;
 
 }

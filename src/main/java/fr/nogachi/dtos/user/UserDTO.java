@@ -1,6 +1,7 @@
 package fr.nogachi.dtos.user;
 
 
+import fr.nogachi.dtos.article.ArticleDTO;
 import fr.nogachi.entities.Article;
 import fr.nogachi.entities.Role;
 import lombok.AllArgsConstructor;
@@ -19,5 +20,5 @@ public class UserDTO {
     private String email;
     private String password;
     private Role role;
-    private List<Article> articleList;
+    private List<ArticleDTO> articleList;
 }

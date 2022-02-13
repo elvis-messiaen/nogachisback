@@ -1,6 +1,6 @@
 package fr.nogachi.enumeration;
 
-public enum Type {
+public enum TypesCard {
     RECETTE,
     CONSERVATION
 }

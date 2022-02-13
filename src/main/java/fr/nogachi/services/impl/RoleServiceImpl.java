@@ -9,14 +9,15 @@ import fr.nogachi.repositories.RoleRepository;
 import fr.nogachi.services.RoleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService {
 
 
