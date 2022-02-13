@@ -27,7 +27,7 @@ public class FileController {
         this.service = fileService;
     }
 
-    @PostMapping(path = "/photo", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/file", produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, String> createPhoto(@RequestParam MultipartFile file) {
         return Map.of("url", service.uploadFile(file));
     }
@@ -35,7 +35,7 @@ public class FileController {
     .* => regex qui defini que l'on peux avoir exemple .jpg .png .jpeg etc
  */
 
-    @GetMapping("/photo/{filename:.*}")
+    @GetMapping("/file/{filename:.*}")
     public ResponseEntity<Resource> download (@PathVariable String filename, HttpServletRequest request) throws FileNotFoundException {
         Resource resource = service.downloadFile(filename);
         String contentType = null;

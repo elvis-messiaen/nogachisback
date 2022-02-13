@@ -1,17 +1,14 @@
 package fr.nogachi.entities;
 
-import fr.nogachi.enumeration.Type;
+import fr.nogachi.enumeration.TypesCard;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
 
 @Data
 @NoArgsConstructor
@@ -33,17 +30,24 @@ public class Article implements Serializable {
     private String namephoto;
 
     @Enumerated(EnumType.STRING)
-    private Type nametype;
+    private TypesCard nametype;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private  Category namecategory;
 
-    public Article(Long id, String title, String content, LocalDate date, String namephoto,Type nametype) {
+    public Article(Long id, String title, String content, LocalDate date, String namephoto, TypesCard nametype) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.date = date;
         this.namephoto = namephoto;
         this.nametype = nametype;
+    }
+    public Article(Long id, String title, String content, LocalDate date, String namephoto) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.namephoto = namephoto;
     }
 }
