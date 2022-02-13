@@ -30,7 +30,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
 
-    @Transactional
+
     public PhotoDTO save(MultipartFile namephoto) {
         PhotoSaveDTO photoSaveDTO = modelMapper.map(namephoto,PhotoSaveDTO.class);
         photoSaveDTO.setNamephoto(namephoto);
@@ -46,27 +46,27 @@ public class PhotoServiceImpl implements PhotoService {
         return modelMapper.map(photosaved, PhotoDTO.class);
     }
 
-    @Transactional
+
     public PhotoDTO update(PhotoUpdateDTO photoUpdateDTO) {
         Photo photo = modelMapper.map(photoUpdateDTO, Photo.class);
         Photo photoDTO = this.photoRepository.save(photo);
         return modelMapper.map(photoDTO, PhotoDTO.class);
     }
 
-    @Transactional
+
     public void delete(PhotoDeleteDTO photoDeleteDTO) {
         Photo photo = modelMapper.map(photoDeleteDTO, Photo.class);
         photoRepository.delete(photo);
     }
 
-    @Transactional
+
     public List<PhotoDTO> findAll() {
         List<PhotoDTO> photoDTOList = new ArrayList<>();
         this.photoRepository.findAll().forEach(photo -> photoDTOList.add(modelMapper.map(photo, PhotoDTO.class)));
         return photoDTOList;
     }
 
-    @Transactional
+
     public Optional<PhotoDTO> findById(long id) throws NoSuchElementException {
         Optional<Photo> photo = this.photoRepository.findById(id);
         return Optional.of(modelMapper.map(photo.orElse(null), PhotoDTO.class));

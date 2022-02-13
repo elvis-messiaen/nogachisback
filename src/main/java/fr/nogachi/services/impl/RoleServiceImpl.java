@@ -39,21 +39,18 @@ public class RoleServiceImpl implements RoleService {
      * @param roleDTO enregistre un role
      * @return roleDTO sauvegarder
      */
-    @Transactional
     public RoleDTO save(RoleSaveDTO roleDTO) {
         Role roleSave = mapper.map(roleDTO, Role.class);
         Role roleSaving = this.roleRepository.save(roleSave);
         return mapper.map(roleSaving, RoleDTO.class);
     }
 
-    @Transactional
     public RoleDTO update(RoleUpdateDTO roleDTO) {
         Role roleUdpate = mapper.map(roleDTO, Role.class);
         Role roleSaving = this.roleRepository.save(roleUdpate);
         return mapper.map(roleSaving, RoleDTO.class);
     }
 
-    @Transactional
     public void deleteById(RoleDeleteDTO roleDTO) {
         Role role = mapper.map(roleDTO, Role.class);
         roleRepository.delete(role);
@@ -73,7 +70,6 @@ public class RoleServiceImpl implements RoleService {
      *
      * @return List role
      */
-    @Transactional
     public List<RoleDTO> findAll() {
         List<RoleDTO> roleDTOList = new ArrayList<>();
         this.roleRepository.findAll().forEach(role -> {
@@ -87,7 +83,6 @@ public class RoleServiceImpl implements RoleService {
      * @param id findById un role par son id si il existe
      * @return role
      */
-    @Transactional
     public Optional<RoleDTO> findById(Long id) throws NoSuchElementException {
         Optional<Role> role = this.roleRepository.findById(id);
         return Optional.of(mapper.map(role.get(), RoleDTO.class));

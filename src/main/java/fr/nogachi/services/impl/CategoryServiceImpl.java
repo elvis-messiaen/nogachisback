@@ -44,28 +44,24 @@ public class CategoryServiceImpl implements CategoryService {
      * * @return sauvegarde de l'user
      */
 
-    @Transactional
     public CategoryDTO save(CategorySaveDTO categoryDTO) {
         Category categorySave = modelMapper.map(categoryDTO, Category.class);
         Category categorySaving = this.categoryRepository.save(categorySave);
         return modelMapper.map(categorySaving, CategoryDTO.class);
     }
 
-    @Transactional
     public CategoryDTO update(CategoryUpdateDTO categoryDTO) {
         Category categoryUpdate = modelMapper.map(categoryDTO, Category.class);
         Category categorySaving = this.categoryRepository.save(categoryUpdate);
         return modelMapper.map(categorySaving, CategoryDTO.class);
     }
 
-    @Transactional
     public void deleteById(CategoryDeleteDTO categoryDTO) {
         Category category = modelMapper.map(categoryDTO, Category.class);
         categoryRepository.delete(category);
 
     }
 
-    @Transactional
     public List<CategoryDTO> findAll() {
         List<CategoryDTO> categoryDTOList = new ArrayList<>();
         this.categoryRepository.findAll().forEach(category -> {
@@ -74,7 +70,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryDTOList;
     }
 
-    @Transactional
     public Optional<CategoryDTO> findById(long id)throws NoSuchElementException {
         Optional<Category> category = this.categoryRepository.findById(id);
         return Optional.of(modelMapper.map(category.get(), CategoryDTO.class));

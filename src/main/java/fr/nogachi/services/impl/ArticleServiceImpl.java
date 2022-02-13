@@ -33,7 +33,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
 
-    @Transactional
+
     public ArticleSaveDTO save(ArticleSaveDTO articleSaveDTO) {
         Article articles = modelMapper.map(articleSaveDTO, Article.class);
         if (articleSaveDTO.getNamecategory() != null) {
@@ -49,27 +49,24 @@ public class ArticleServiceImpl implements ArticleService {
         return modelMapper.map(articleSaveDTO, ArticleSaveDTO.class);
     }
 
-    @Transactional
+
     public ArticleDTO update(ArticleUpdateDTO articleUpdateDTO) {
         Article article = modelMapper.map(articleUpdateDTO, Article.class);
         Article articleDTO = this.articleRepository.save(article);
         return modelMapper.map(articleDTO, ArticleDTO.class);
     }
 
-    @Transactional
     public void delete(ArticleDeleteDTO articleDeleteDTO) {
         Article article = modelMapper.map(articleDeleteDTO, Article.class);
         articleRepository.delete(article);
     }
 
-    @Transactional
     public List<ArticleDTO> findAll() {
         List<ArticleDTO> articleDTOList = new ArrayList<>();
         this.articleRepository.findAll().forEach(article -> articleDTOList.add(modelMapper.map(article, ArticleDTO.class)));
         return articleDTOList;
     }
 
-    @Transactional
     public Optional<ArticleDTO> findById(long id) throws NoSuchElementException {
         Optional<Article> article = this.articleRepository.findById(id);
         return Optional.of(modelMapper.map(article.orElse(null), ArticleDTO.class));

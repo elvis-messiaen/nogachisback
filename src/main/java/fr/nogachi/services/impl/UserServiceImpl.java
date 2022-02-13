@@ -46,7 +46,6 @@ public class UserServiceImpl implements UserService {
      * @param userDTO
      * @return sauvegarde de l'user
      */
-    @Transactional
     public UserRoleDTO save(UserSaveDTO userDTO) {
         User userSave = mapper.map(userDTO, User.class);
         Set<Role> roles = new HashSet<>();
@@ -58,7 +57,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Transactional
     public UserDTO update(UserUpdateDTO userUpdateDTO) {
         User userUpdate = mapper.map(userUpdateDTO, User.class);
         User usersaving = this.userRepository.save(userUpdate);
@@ -70,7 +68,6 @@ public class UserServiceImpl implements UserService {
      *
      * @param userDTO
      */
-    @Transactional
     public void delete(UserDeleteDTO userDTO) {
         User user = mapper.map(userDTO, User.class);
         userRepository.delete(user);
@@ -81,7 +78,6 @@ public class UserServiceImpl implements UserService {
      *
      * @return la listes des users
      */
-    @Transactional
     public List<UserDTO> findAll() {
         List<UserDTO> userDTOList = new ArrayList<>();
         this.userRepository.findAll().forEach(user ->
@@ -96,7 +92,6 @@ public class UserServiceImpl implements UserService {
      * @param id
      * @return
      */
-    @Transactional
     public Optional<UserDTO> findById(Long id) throws NoSuchElementException {
         Optional<User> user = this.userRepository.findById(id);
         return Optional.of(mapper.map(user.get(), UserDTO.class));
