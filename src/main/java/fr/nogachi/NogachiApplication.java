@@ -2,6 +2,7 @@ package fr.nogachi;
 
 import fr.nogachi.entities.Article;
 import fr.nogachi.entities.Category;
+import fr.nogachi.entities.ERole;
 import fr.nogachi.entities.Role;
 import fr.nogachi.enumeration.TypesCard;
 import fr.nogachi.property.FileStorageProperty;
@@ -15,6 +16,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
@@ -29,13 +31,19 @@ public class NogachiApplication {
     @Bean
     CommandLineRunner start(RoleRepository roleRepository, ArticleRepository articleRepository, CategoryRepository categoryRepository) {
         return args -> {
-            roleRepository.save(new Role(null,"ADMIN"));
-            roleRepository.save(new Role(null,"USER"));
+            roleRepository.findByName(ERole.ROLE_USER);
+
+            roleRepository.save(new Role(null, ERole.ROLE_USER));
+            roleRepository.save(new Role(null, ERole.ROLE_ADMIN));
+
+
             Category leg = new Category(null, "Legumes");
-            Category leg1= new Category(null, "Fruit");
+            Category leg1 = new Category(null, "Fruit");
             Category leg2 = new Category(null, "Viande");
             Category leg3 = new Category(null, "Volailes");
             Category leg4 = new Category(null, "Conserve");
+
+
             categoryRepository.save(leg);
             categoryRepository.save(leg1);
             categoryRepository.save(leg2);

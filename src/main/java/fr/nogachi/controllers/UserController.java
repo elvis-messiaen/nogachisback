@@ -35,7 +35,7 @@ public class UserController {
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @GetMapping(path = "/user")
+    @GetMapping(path = "/users")
     public List<UserDTO> listUser() {
         return userService.findAll();
 
@@ -48,7 +48,7 @@ public class UserController {
      *
      * @return
      */
-    @GetMapping(path = "/user/{id}")
+    @GetMapping(path = "/users/{id}")
     public Optional<UserDTO> findUnUser(@PathVariable Long id) {
         return userService.findById(id);
     }
@@ -89,7 +89,7 @@ public class UserController {
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @DeleteMapping(path = "/user")
+    @DeleteMapping(path = "/users")
     public void deleteUser(@RequestBody UserDeleteDTO userDeleteDTO) {
         this.userService.delete(userDeleteDTO);
     }

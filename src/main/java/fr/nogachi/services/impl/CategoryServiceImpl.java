@@ -20,19 +20,19 @@ import java.util.Optional;
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
 
-    private CategoryRepository categoryRepository;
-    private ModelMapper mapper;
+    private final CategoryRepository categoryRepository;
+    private final ModelMapper modelMapper;
 
     /**
      * constructeur du repository
      * constructeur du mapper
-     *
-     * @param categoryRepository
+     *  @param categoryRepository
      * @param mapper
+     * @param modelMapper
      */
-    public CategoryServiceImpl(CategoryRepository categoryRepository, ModelMapper mapper) {
+    public CategoryServiceImpl(CategoryRepository categoryRepository, ModelMapper modelMapper) {
         this.categoryRepository = categoryRepository;
-        this.mapper = mapper;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -46,21 +46,21 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional
     public CategoryDTO save(CategorySaveDTO categoryDTO) {
-        Category categorySave = mapper.map(categoryDTO, Category.class);
+        Category categorySave = modelMapper.map(categoryDTO, Category.class);
         Category categorySaving = this.categoryRepository.save(categorySave);
-        return mapper.map(categorySaving, CategoryDTO.class);
+        return modelMapper.map(categorySaving, CategoryDTO.class);
     }
 
     @Transactional
     public CategoryDTO update(CategoryUpdateDTO categoryDTO) {
-        Category categoryUpdate = mapper.map(categoryDTO, Category.class);
+        Category categoryUpdate = modelMapper.map(categoryDTO, Category.class);
         Category categorySaving = this.categoryRepository.save(categoryUpdate);
-        return mapper.map(categorySaving, CategoryDTO.class);
+        return modelMapper.map(categorySaving, CategoryDTO.class);
     }
 
     @Transactional
     public void deleteById(CategoryDeleteDTO categoryDTO) {
-        Category category = mapper.map(categoryDTO, Category.class);
+        Category category = modelMapper.map(categoryDTO, Category.class);
         categoryRepository.delete(category);
 
     }
@@ -69,7 +69,7 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CategoryDTO> findAll() {
         List<CategoryDTO> categoryDTOList = new ArrayList<>();
         this.categoryRepository.findAll().forEach(category -> {
-            categoryDTOList.add(mapper.map(category, CategoryDTO.class));
+            categoryDTOList.add(modelMapper.map(category, CategoryDTO.class));
         });
         return categoryDTOList;
     }
@@ -77,7 +77,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Transactional
     public Optional<CategoryDTO> findById(long id)throws NoSuchElementException {
         Optional<Category> category = this.categoryRepository.findById(id);
-        return Optional.of(mapper.map(category.get(), CategoryDTO.class));
+        return Optional.of(modelMapper.map(category.get(), CategoryDTO.class));
     }
 
 

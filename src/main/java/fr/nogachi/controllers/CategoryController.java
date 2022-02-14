@@ -3,11 +3,7 @@ package fr.nogachi.controllers;
 import fr.nogachi.dtos.category.CategoryDTO;
 import fr.nogachi.dtos.category.CategoryDeleteDTO;
 import fr.nogachi.dtos.category.CategorySaveDTO;
-import fr.nogachi.dtos.category.CategoryUpdateDTO;
-import fr.nogachi.entities.Category;
-import fr.nogachi.services.CategoryService;
 import fr.nogachi.services.impl.CategoryServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +13,11 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200/")
 public class CategoryController {
 
+    final CategoryServiceImpl categoryServiceImpl;
 
-    public CategoryController(CategoryServiceImpl categoryService) {
-        this.categoryService = categoryService;
+    public CategoryController(CategoryServiceImpl categoryServiceImpl) {
+        this.categoryServiceImpl = categoryServiceImpl;
     }
-
-    CategoryServiceImpl categoryService;
 
     /**
      * Affiche la liste des categories
@@ -31,7 +26,7 @@ public class CategoryController {
      */
     @GetMapping(path = "/category")
     public List<CategoryDTO> listCategory() {
-        return categoryService.findAll();
+        return categoryServiceImpl.findAll();
     }
 
     /**
@@ -44,7 +39,7 @@ public class CategoryController {
     @GetMapping(path = "/category/{id}")
     public Optional<CategoryDTO> findCategoryById(@PathVariable Long id) {
 
-        return categoryService.findById(id);
+        return categoryServiceImpl.findById(id);
     }
 
     /**
@@ -54,7 +49,7 @@ public class CategoryController {
      */
     @PostMapping(path = "/category")
     public CategoryDTO createCategory(@RequestBody CategorySaveDTO categorySaveDTO) {
-        return categoryService.save(categorySaveDTO);
+        return categoryServiceImpl.save(categorySaveDTO);
     }
 
     /**
@@ -64,7 +59,7 @@ public class CategoryController {
      */
     @PutMapping("/category")
     public CategoryDTO updateCategory(@RequestBody CategorySaveDTO categoryUpdateDTO) {
-        return categoryService.save(categoryUpdateDTO);
+        return categoryServiceImpl.save(categoryUpdateDTO);
     }
 
     /**
@@ -74,7 +69,7 @@ public class CategoryController {
      */
     @DeleteMapping(path = "/category")
     public void deleteCategory(@RequestBody CategoryDeleteDTO categoryDeleteDTO) {
-        categoryService.deleteById(categoryDeleteDTO);
+        categoryServiceImpl.deleteById(categoryDeleteDTO);
     }
 }
 

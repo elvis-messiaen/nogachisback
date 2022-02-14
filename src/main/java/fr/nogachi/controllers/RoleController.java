@@ -33,7 +33,7 @@ public class RoleController {
      * TEST UNITAIRE : WIP
      */
 
-    @GetMapping(path = "/role")
+    @GetMapping(path = "/roles")
     public List<RoleDTO> listRole() {
         return roleService.findAll();
     }
@@ -46,7 +46,7 @@ public class RoleController {
      * @return
      */
 
-    @GetMapping(path = "/role/{id}")
+    @GetMapping(path = "/roles/{id}")
     public Optional<RoleDTO> findRoleById(@PathVariable Long id) {
         return roleService.findById(id);
     }
@@ -57,7 +57,7 @@ public class RoleController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @PostMapping(path = "/role")
+    @PostMapping(path = "/roles")
     public RoleDTO createRole(@RequestBody RoleSaveDTO roleSaveDTO) {
         return roleService.save(roleSaveDTO);
     }
@@ -81,7 +81,7 @@ public class RoleController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @DeleteMapping(path = "/role")
+    @DeleteMapping(path = "/roles")
     public void deleteRole(@RequestBody RoleDeleteDTO roleDeleteDTO) {
         roleService.deleteById(roleDeleteDTO);
     }
