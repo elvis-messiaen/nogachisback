@@ -1,5 +1,6 @@
 package fr.nogachi.entities;
 
+import fr.nogachi.enumeration.ModeConservation;
 import fr.nogachi.enumeration.TypesCard;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,8 +23,11 @@ public class Article implements Serializable {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition="LONGTEXT")
+    @Column(nullable = false)
     private String content;
+
+    @Column(nullable = false, columnDefinition="LONGTEXT")
+    private String contentdescription;
 
     private LocalDate date;
 
@@ -32,16 +36,20 @@ public class Article implements Serializable {
     @Enumerated(EnumType.STRING)
     private TypesCard nametype;
 
+    @Enumerated(EnumType.STRING)
+    private ModeConservation modeconservation;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private  Category namecategory;
 
-    public Article(Long id, String title, String content, LocalDate date, String namephoto, TypesCard nametype) {
+    public Article(Long id, String title, String content, LocalDate date, String namephoto, TypesCard nametype,String contentdescription) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.date = date;
         this.namephoto = namephoto;
         this.nametype = nametype;
+        this.contentdescription = contentdescription;
     }
     public Article(Long id, String title, String content, LocalDate date, String namephoto) {
         this.id = id;
