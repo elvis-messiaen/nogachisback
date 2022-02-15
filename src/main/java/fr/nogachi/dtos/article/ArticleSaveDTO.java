@@ -20,6 +20,8 @@ public class ArticleSaveDTO {
 	
 
 	private String content;
+
+	private String contentdescription;
 	
 
 	private LocalDate date;

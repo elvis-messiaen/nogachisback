@@ -42,22 +42,22 @@ public class NogachiApplication {
             categoryRepository.save(leg3);
             categoryRepository.save(leg4);
 
-            Article article1 = new Article(null,"carotte","berbberbrbebrbebrberbe", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION);
-            Article article2 = new Article(null,"navet","berbberbrbebrbebrberbe", LocalDate.of(1940, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION);
-            Article article3 = new Article(null,"poulet","berbberbrbebrbebrberbe", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION);
-            Article article4 = new Article(null,"pomme de terre","berbberbrbebrbebrberbe", LocalDate.of(1980, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION);
-            Article article5 = new Article(null,"épinard","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION);
+            Article article1 = new Article(null,"carotte","berbberbrbebrbebrberbe", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION,"berbberbrbebrbebrberbe");
+            Article article2 = new Article(null,"navet","berbberbrbebrbebrberbe", LocalDate.of(1940, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION,"berbberbrbebrbebrberbe");
+            Article article3 = new Article(null,"poulet","berbberbrbebrbebrberbe", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION,"berbberbrbebrbebrberbe");
+            Article article4 = new Article(null,"pomme de terre","berbberbrbebrbebrberbe", LocalDate.of(1980, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION,"berbberbrbebrbebrberbe");
+            Article article5 = new Article(null,"épinard","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION,"berbberbrbebrbebrberbe");
 
-            Article recette1 = new Article(null,"poulet au épices","poulet au ", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION);
-            Article recette2 = new Article(null,"Salade de concombre au chèvre et olives","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION);
-            Article recette3 = new Article(null,"pate carbonara","blablablabkalalalalalalla", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION);
-            Article recette4 = new Article(null,"riz cantonai","riz mddsdmlfmdlfmdlmfdlfmsdlfsmdlmslmdlfmsdl", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE);
-            Article recette5 = new Article(null,"pate bolognaise","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE);
-            Article recette6 = new Article(null,"pizza au feu de bois","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE);
-            Article recette7 = new Article(null,"lasagne au chévre","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE);
-            Article recette8 = new Article(null,"poulet basquaise","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE);
-            Article recette9 = new Article(null,"apéro parti","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE);
-            Article recette10 = new Article(null,"Phô vietnamien","miam j'adore cela", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE);
+            Article recette1 = new Article(null,"poulet au épices","poulet au ", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION,"berbberbrbebrbebrberbe");
+            Article recette2 = new Article(null,"Salade de concombre au chèvre et olives","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION,"berbberbrbebrbebrberbe");
+            Article recette3 = new Article(null,"pate carbonara","blablablabkalalalalalalla", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.CONSERVATION,"berbberbrbebrbebrberbe");
+            Article recette4 = new Article(null,"riz cantonai","riz mddsdmlfmdlfmdlmfdlfmsdlfsmdlmslmdlfmsdl", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE,"berbberbrbebrbebrberbe");
+            Article recette5 = new Article(null,"pate bolognaise","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE,"berbberbrbebrbebrberbe");
+            Article recette6 = new Article(null,"pizza au feu de bois","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE,"berbberbrbebrbebrberbe");
+            Article recette7 = new Article(null,"lasagne au chévre","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE,"berbberbrbebrbebrberbe");
+            Article recette8 = new Article(null,"poulet basquaise","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE,"berbberbrbebrbebrberbe");
+            Article recette9 = new Article(null,"apéro parti","jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE,"berbberbrbebrbebrberbe");
+            Article recette10 = new Article(null,"Phô vietnamien","miam j'adore cela", LocalDate.of(2021, 01, 01), "http://localhost:8080/file/haricots-verts.jpg", TypesCard.RECETTE,"berbberbrbebrbebrberbe");
 
             articleRepository.save(article1);
             articleRepository.save(article2);

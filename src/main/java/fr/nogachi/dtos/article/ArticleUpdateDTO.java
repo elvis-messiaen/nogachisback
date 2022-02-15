@@ -23,7 +23,8 @@ public class ArticleUpdateDTO {
 	
 
 	private String content;
-	
+
+	private String contentdescription;
 
 	private Date date;
 

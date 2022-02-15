@@ -24,7 +24,8 @@ public class ArticleDTO {
 	
 
 	private String content;
-	
+
+	private String contentdescription;
 
 	private LocalDate date;
 
