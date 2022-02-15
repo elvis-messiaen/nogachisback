@@ -1,5 +1,6 @@
 package fr.nogachi.entities;
 
+import fr.nogachi.enumeration.ModeConservation;
 import fr.nogachi.enumeration.TypesCard;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,9 @@ public class Article implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private TypesCard nametype;
+
+    @Enumerated(EnumType.STRING)
+    private ModeConservation modeconservation;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private  Category namecategory;
