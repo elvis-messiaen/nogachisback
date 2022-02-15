@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+/*
 @WebMvcTest(controllers = UserController.class)
 public class UserControllerTest {
 
@@ -25,7 +25,6 @@ public class UserControllerTest {
     private UserServiceImpl userServiceImpl;
 
 
-/*
     private UserDTO userDTO() {
         return new UserDTO(
                 1L,
@@ -50,6 +49,7 @@ public class UserControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isEmpty());
     }
-    */
+
 
 }
+*/
