@@ -3,10 +3,10 @@ package fr.nogachi.entities;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*
 class UserTest {
 
-/*    @Test
+    @Test
     void getEmail() {
         Role role = new Role(null,"administrateur");
         User user = new User(null,"elvis@hotmail.com","222222",role);
@@ -20,7 +20,7 @@ class UserTest {
 
         }
         assertEquals("elvis@hotmail.com",user.getEmail().length());
-    }*/
+    }
 
     @Test
     void getPassword() {
@@ -33,4 +33,4 @@ class UserTest {
     @Test
     void setPassword() {
     }
-}
+}*/

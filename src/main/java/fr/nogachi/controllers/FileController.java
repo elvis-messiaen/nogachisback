@@ -29,8 +29,7 @@ public class FileController {
 
     @PostMapping(path = "/file", produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, String> createPhoto(@RequestParam MultipartFile file) {
-//        return Map.of("url", service.uploadFile(file));
-        return null;
+        return Map.of("url", service.uploadFile(file));
     }
 /*
     .* => regex qui defini que l'on peux avoir exemple .jpg .png .jpeg etc
