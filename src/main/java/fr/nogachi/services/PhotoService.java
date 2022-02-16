@@ -1,4 +1,4 @@
-package fr.nogachi.services.impl;
+package fr.nogachi.services;
 
 import fr.nogachi.dtos.photo.PhotoDTO;
 import fr.nogachi.dtos.photo.PhotoDeleteDTO;

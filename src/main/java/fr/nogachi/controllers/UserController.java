@@ -14,28 +14,23 @@ import java.util.Optional;
  * @author Messiaen elvis
  */
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/api/users")
 public class UserController {
 
     UserServiceImpl userService;
+
     public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
-
-
-    /**
-     *   instancie à la demande un user repository
-     *   POSTMAN: OK
-     *   TEST : (OK/FAIL/WIP)
-     */
 
     /**
      * affiche la list des users
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @GetMapping(path = "/users")
+    @GetMapping()
     public List<UserDTO> listUser() {
         return userService.findAll();
 
@@ -48,7 +43,7 @@ public class UserController {
      *
      * @return
      */
-    @GetMapping(path = "/users/{id}")
+    @GetMapping("/{id}")
     public Optional<UserDTO> findUnUser(@PathVariable Long id) {
         return userService.findById(id);
     }
@@ -58,10 +53,11 @@ public class UserController {
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-/*    @PostMapping(path = "/user")
+    @PostMapping()
     public UserDTO create(@RequestBody UserSaveDTO userSaveDTO) {
-        return this.userService.save(userSaveDTO);
-    }*/
+//        return this.userService.save(userSaveDTO);
+        return null;
+    }
 
     /**
      * create un user with role user
@@ -77,19 +73,21 @@ public class UserController {
      * mise a jour de l'user
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
+     *
      * @param userUpdateDTO
      */
-/*    @PutMapping(path = "/user")
+    @PutMapping()
     public UserDTO update(@RequestBody UserSaveDTO userUpdateDTO) {
-        return this.userService.save(userUpdateDTO);
-    }*/
+//        return this.userService.save(userUpdateDTO);
+        return null;
+    }
 
     /**
      * suppprimer un user
      * POSTMAN: OK
      * TEST : (OK/FAIL/WIP)
      */
-    @DeleteMapping(path = "/users")
+    @DeleteMapping()
     public void deleteUser(@RequestBody UserDeleteDTO userDeleteDTO) {
         this.userService.delete(userDeleteDTO);
     }

@@ -6,6 +6,8 @@ import fr.nogachi.dtos.photo.PhotoSaveDTO;
 import fr.nogachi.dtos.photo.PhotoUpdateDTO;
 import fr.nogachi.entities.Photo;
 import fr.nogachi.repositories.PhotoRepository;
+import fr.nogachi.services.FileService;
+import fr.nogachi.services.PhotoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
