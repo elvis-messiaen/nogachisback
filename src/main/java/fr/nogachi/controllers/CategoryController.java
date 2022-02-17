@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/api/category")
 public class CategoryController {
 
     final CategoryServiceImpl categoryServiceImpl;
@@ -24,7 +25,7 @@ public class CategoryController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @GetMapping(path = "/category")
+    @GetMapping()
     public List<CategoryDTO> listCategory() {
         return categoryServiceImpl.findAll();
     }
@@ -36,7 +37,7 @@ public class CategoryController {
      *
      * @return
      */
-    @GetMapping(path = "/category/{id}")
+    @GetMapping("/{id}")
     public Optional<CategoryDTO> findCategoryById(@PathVariable Long id) {
 
         return categoryServiceImpl.findById(id);
@@ -47,7 +48,7 @@ public class CategoryController {
      * POSTMAN : Ok
      * TEST UNITAIRE : WIP
      */
-    @PostMapping(path = "/category")
+    @PostMapping()
     public CategoryDTO createCategory(@RequestBody CategorySaveDTO categorySaveDTO) {
         return categoryServiceImpl.save(categorySaveDTO);
     }
@@ -57,7 +58,7 @@ public class CategoryController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @PutMapping("/category")
+    @PutMapping()
     public CategoryDTO updateCategory(@RequestBody CategorySaveDTO categoryUpdateDTO) {
         return categoryServiceImpl.save(categoryUpdateDTO);
     }
@@ -67,7 +68,7 @@ public class CategoryController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @DeleteMapping(path = "/category")
+    @DeleteMapping()
     public void deleteCategory(@RequestBody CategoryDeleteDTO categoryDeleteDTO) {
         categoryServiceImpl.deleteById(categoryDeleteDTO);
     }

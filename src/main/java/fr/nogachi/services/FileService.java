@@ -1,4 +1,4 @@
-package fr.nogachi.services.impl;
+package fr.nogachi.services;
 
 import fr.nogachi.Exception.FileStorageException;
 import fr.nogachi.property.FileStorageProperty;
@@ -32,37 +32,37 @@ public class FileService {
 
         try {
             Files.createDirectories(this.filerStorageLocation);
-        }catch (Exception e) {
-            throw  new FileStorageException("impossible de créer le dossier");
+        } catch (Exception e) {
+            throw new FileStorageException("impossible de créer le dossier");
         }
     }
 
-    public String uploadFile (MultipartFile multipartFile) {
+    public String uploadFile(MultipartFile multipartFile) {
         String filename = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-         try  {
-             if (filename.contains("..")) {
-                 throw  new FileStorageException("nom de fichier incorrect");
-             }
-             filename = filename.replaceAll(" ","_");
-             filename = filename;// + LocalDateTime.now();
-             Path cheminDeDestination = filerStorageLocation.resolve(filename);
-             Files.copy(multipartFile.getInputStream(),cheminDeDestination, StandardCopyOption.REPLACE_EXISTING);
-             return ServletUriComponentsBuilder.fromCurrentContextPath()// renvoie une String
-                     .path("file/")
-                     .path(filename)
-                     .toUriString();
-         } catch (IOException e) {
-             throw new FileStorageException("Erreur lors du téléchargement du fichier");
-         }
+        try {
+            if (filename.contains("..")) {
+                throw new FileStorageException("nom de fichier incorrect");
+            }
+            filename = filename.replaceAll(" ", "_");
+            // filename = filename + LocalDateTime.now();
+            Path cheminDeDestination = filerStorageLocation.resolve(filename);
+            Files.copy(multipartFile.getInputStream(), cheminDeDestination, StandardCopyOption.REPLACE_EXISTING);
+            return ServletUriComponentsBuilder.fromCurrentContextPath()// renvoie une String
+                    .path("/api/file/")
+                    .path(filename)
+                    .toUriString();
+        } catch (IOException e) {
+            throw new FileStorageException("Erreur lors du téléchargement du fichier");
+        }
     }
 
     public Resource downloadFile(String filename) throws FileNotFoundException {
         try {
-            Path path  = this.filerStorageLocation.resolve(filename).normalize();
+            Path path = this.filerStorageLocation.resolve(filename).normalize();
             Resource resource = new UrlResource(path.toUri());
             if (resource.exists()) {
                 return resource;
-            }else {
+            } else {
                 throw new FileNotFoundException("fichier introuvable");
             }
         } catch (MalformedURLException e) {

@@ -18,10 +18,8 @@ import java.time.LocalDate;
 public class ArticleDTO {
 
 	private Long id;
-	
 
 	private String title;
-	
 
 	private String content;
 

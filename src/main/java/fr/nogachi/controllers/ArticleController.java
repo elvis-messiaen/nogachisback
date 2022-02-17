@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/api/article")
 public class ArticleController {
 
     final ArticleServiceImpl articleServiceImpl;
@@ -19,10 +20,7 @@ public class ArticleController {
     /**
      * Instancie à la demande le service article
      */
-
-
     public ArticleController(ArticleServiceImpl articleServiceImpl) {
-
         this.articleServiceImpl = articleServiceImpl;
     }
 
@@ -30,7 +28,7 @@ public class ArticleController {
      * Affiche de la liste des articles
      *
      */
-    @GetMapping(path = "/article")
+    @GetMapping()
     public List<ArticleDTO> listArticle() {
         return articleServiceImpl.findAll();
     }
@@ -40,7 +38,7 @@ public class ArticleController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @GetMapping(path = "/article/{id}")
+    @GetMapping("/{id}")
     public Optional<ArticleDTO> findArticleById(@PathVariable Long id) {
         return articleServiceImpl.findById(id);
     }
@@ -50,13 +48,13 @@ public class ArticleController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @PostMapping(path = "/article")
+    @PostMapping()
     public ArticleSaveDTO createArticle(@RequestBody ArticleSaveDTO articleSaveDTO) {
         return articleServiceImpl.save(articleSaveDTO);
     }
 
     // modifier un article dans la table
-    @PutMapping(path = "/article")
+    @PutMapping()
     public ArticleDTO updateArticle(@RequestBody ArticleUpdateDTO articleUpdateDTO) {
         return articleServiceImpl.update(articleUpdateDTO);
     }
@@ -64,7 +62,7 @@ public class ArticleController {
     /**
      * Supprime un article par id
      */
-    @DeleteMapping(path = "/article")
+    @DeleteMapping()
     public void deleteArticle(@RequestBody ArticleDeleteDTO articleDeleteDTO) {
         articleServiceImpl.delete(articleDeleteDTO);
     }

@@ -3,7 +3,7 @@ package fr.nogachi.controllers;
 import fr.nogachi.dtos.photo.PhotoDTO;
 import fr.nogachi.dtos.photo.PhotoDeleteDTO;
 import fr.nogachi.dtos.photo.PhotoUpdateDTO;
-import fr.nogachi.services.impl.PhotoService;
+import fr.nogachi.services.PhotoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/api/photo")
 public class PhotoController {
 
     private PhotoService photoService;
@@ -30,7 +31,7 @@ public class PhotoController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @GetMapping(path = "/photo")
+    @GetMapping()
     public List<PhotoDTO> listPhoto() {
         return photoService.findAll();
     }
@@ -39,9 +40,10 @@ public class PhotoController {
      * Recherche une photo par id
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
+     *
      * @return
      */
-    @GetMapping(path = "/photo/{id}")
+    @GetMapping("/{id}")
     public Optional<PhotoDTO> findPhotoById(@PathVariable Long id) {
         return photoService.findById(id);
     }
@@ -51,7 +53,7 @@ public class PhotoController {
      * POSTMAN : Ok
      * TEST UNITAIRE : WIP
      */
-    @PostMapping(path = "/photo")
+    @PostMapping()
     public PhotoDTO createPhoto(@RequestParam MultipartFile namephoto) {
         return this.photoService.save(
                 namephoto
@@ -63,7 +65,7 @@ public class PhotoController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @PutMapping(path = "/photo/{id}")
+    @PutMapping("/{id}")
     public PhotoDTO updatePhoto(@PathVariable Long id, @RequestBody PhotoUpdateDTO photoUpdateDTO) {
         photoUpdateDTO.setId(id);
         return photoService.update(photoUpdateDTO);
@@ -74,7 +76,7 @@ public class PhotoController {
      * POSTMAN : OK
      * TEST UNITAIRE : WIP
      */
-    @DeleteMapping(path = "/photo")
+    @DeleteMapping()
     public void deletePhoto(@RequestBody PhotoDeleteDTO photoDeleteDTO) {
         photoService.delete(photoDeleteDTO);
     }

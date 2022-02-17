@@ -1,6 +1,6 @@
 package fr.nogachi.controllers;
 
-import fr.nogachi.services.impl.FileService;
+import fr.nogachi.services.FileService;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,8 +17,9 @@ import java.util.Map;
  * @author Messiaen elvis
  */
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/api/file")
 public class FileController {
 
     private final FileService service;
@@ -27,17 +28,16 @@ public class FileController {
         this.service = fileService;
     }
 
-    @PostMapping(path = "/file", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, String> createPhoto(@RequestParam MultipartFile file) {
-//        return Map.of("url", service.uploadFile(file));
-        return null;
+        return Map.of("url", service.uploadFile(file));
     }
 /*
     .* => regex qui defini que l'on peux avoir exemple .jpg .png .jpeg etc
  */
 
-    @GetMapping("/file/{filename:.*}")
-    public ResponseEntity<Resource> download (@PathVariable String filename, HttpServletRequest request) throws FileNotFoundException {
+    @GetMapping("/{filename:.*}")
+    public ResponseEntity<Resource> download(@PathVariable String filename, HttpServletRequest request) throws FileNotFoundException {
         Resource resource = service.downloadFile(filename);
         String contentType = null;
         try {
@@ -49,10 +49,7 @@ public class FileController {
         if (contentType == null) {
             contentType = "application/octet-stream";
         }
-        return  ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "Attachement : filename=\""+ resource.getFilename()+"\"")
-                .body(resource);
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).header(HttpHeaders.CONTENT_DISPOSITION, "Attachement : filename=\"" + resource.getFilename() + "\"").body(resource);
     }
 
 }
