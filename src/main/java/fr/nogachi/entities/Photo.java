@@ -1,15 +1,17 @@
 package fr.nogachi.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 
+@Builder
 @Data
 @NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
 @Entity
 public class Photo {

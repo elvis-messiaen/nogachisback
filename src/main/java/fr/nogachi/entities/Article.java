@@ -2,17 +2,19 @@ package fr.nogachi.entities;
 
 import fr.nogachi.enumeration.ModeConservation;
 import fr.nogachi.enumeration.TypesCard;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@Builder
 @Data
 @NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
 @Entity
 public class Article implements Serializable {

@@ -1,8 +1,15 @@
 package fr.nogachi.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Builder
+@Getter
 @Entity
 @Table(name = "roles")
 public class Role implements Serializable {
